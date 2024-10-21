@@ -18,7 +18,6 @@ header, footer, nav {
     text-align: center; /* Centrage du texte */
 }
 
-/* Mode sombre */
 body.dark-mode {
     background-color: #121212; /* Fond sombre */
     color: #f4f4f4; /* Texte clair */
@@ -77,10 +76,15 @@ header.dark-mode, footer.dark-mode, nav.dark-mode {
 
 /* Section À propos */
 #a-propos {
-    background-color: #e9ecef; /* Couleur de fond gris clair */
-    padding: 20px; /* Espacement interne */
+    background-color: #e9ecef; /* Fond gris clair */
+    padding: 20px;
     margin: 20px;
-    border-radius: 5px; /* Coins arrondis */
+    border-radius: 5px;
+}
+
+.dark-mode #a-propos {
+    background-color: #333; /* Fond plus sombre en mode dark */
+    color: #f4f4f4; /* Couleur du texte en mode sombre */
 }
 
 /* Pied de page */
@@ -125,11 +129,15 @@ nav {
 
 /* Section Contact */
 #contact {
-    background-color: #f4f4f4; /* Couleur de fond douce */
-    padding: 20px; /* Espacement interne */
-    margin: 20px; /* Espacement autour de la section */
-    border-radius: 5px; /* Coins arrondis */
-    text-align: center; /* Centrer le contenu */
+    background-color: #f9f9f9; /* Couleur claire par défaut */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.dark-mode #contact {
+    background-color: #333; /* Fond plus sombre en mode dark */
+    color: #f4f4f4; /* Couleur du texte en mode sombre */
 }
 
 #contact h2 {
