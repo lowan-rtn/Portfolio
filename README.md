@@ -17,8 +17,8 @@ Je m'appelle Lowan Reutin–Rabillé, et je suis étudiant passionné par la pro
 
 - HTML
 - CSS
-- JavaScript (si tu prévois de l'ajouter plus tard)
+- JavaScript
 
 ## Comment accéder à mon portfolio
 
-Vous pouvez consulter mon portfolio en ligne à l'adresse suivante : [mon portfolio](https://lololepro17.github.io) (remplace `lololepro17` par ton nom d'utilisateur).
+Vous pouvez consulter mon portfolio en ligne à l'adresse suivante : [mon portfolio](https://lololepro17.github.io).
