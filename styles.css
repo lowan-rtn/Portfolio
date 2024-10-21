@@ -1,11 +1,15 @@
 /* Mode clair (par défaut) */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Couleur de fond douce pour le mode clair */
-    color: #333; /* Couleur du texte */
-    margin: 0;
-    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: #121212;
+    color: #f4f4f4;
+}
+
 
 header, footer, nav {
     background-color: #007BFF; /* Couleur du fond en mode clair */
