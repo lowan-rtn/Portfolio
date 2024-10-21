@@ -56,6 +56,19 @@ header.dark-mode, footer.dark-mode, nav.dark-mode {
     background-color: #218838; /* Couleur verte plus foncée au survol */
 }
 
+#mode-toggle {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#mode-toggle:hover {
+    background-color: #0056b3;
+}
+
 /* Section À propos */
 #a-propos {
     background-color: #e9ecef; /* Couleur de fond gris clair */
