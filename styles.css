@@ -12,8 +12,10 @@ body.dark-mode {
 
 
 header, footer, nav {
-    background-color: #007BFF; /* Couleur du fond en mode clair */
-    color: white;
+    background-color: #007BFF; /* Couleur bleu */
+    color: white; /* Couleur du texte */
+    padding: 20px;
+    text-align: center; /* Centrage du texte */
 }
 
 /* Mode sombre */
