@@ -1,46 +1,68 @@
+/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Couleur de fond douce */
+    color: #333; /* Couleur du texte */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
 }
 
+/* En-tête */
 header {
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
+    background-color: #007BFF; /* Couleur bleu */
+    color: white; /* Couleur du texte de l'en-tête */
+    padding: 20px;
     text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
+/* Section Projets */
+#projets {
     margin: 20px;
 }
 
-section {
-    margin: 20px 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
+.card {
+    background-color: white; /* Couleur de fond des cartes */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 5px; /* Coins arrondis */
+    margin-bottom: 20px; /* Espace entre les cartes */
+    padding: 15px; /* Espacement interne */
+    transition: box-shadow 0.3s; /* Transition pour l'effet d'ombre */
 }
 
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+}
+
+/* Boutons */
+.btn {
+    background-color: #28a745; /* Couleur verte pour les boutons */
+    color: white; /* Couleur du texte des boutons */
+    border: none; /* Pas de bordure */
+    padding: 10px 15px; /* Espacement interne */
+    text-decoration: none; /* Pas de soulignement */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer */
+}
+
+.btn:hover {
+    background-color: #218838; /* Couleur verte plus foncée au survol */
+}
+
+/* Section À propos */
+#a-propos {
+    background-color: #e9ecef; /* Couleur de fond gris clair */
+    padding: 20px; /* Espacement interne */
+    margin: 20px;
+    border-radius: 5px; /* Coins arrondis */
+}
+
+/* Pied de page */
 footer {
     text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: #fff;
+    padding: 10px;
+    background-color: #007BFF; /* Couleur bleu */
+    color: white; /* Couleur du texte */
+    position: relative; /* Pour le positionnement */
+    bottom: 0;
+    width: 100%; /* Largeur complète */
 }
