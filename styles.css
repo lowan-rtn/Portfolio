@@ -1,18 +1,26 @@
-/* Styles généraux */
+/* Mode clair (par défaut) */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Couleur de fond douce */
+    background-color: #f4f4f4; /* Couleur de fond douce pour le mode clair */
     color: #333; /* Couleur du texte */
     margin: 0;
     padding: 0;
 }
 
-/* En-tête */
-header {
-    background-color: #007BFF; /* Couleur bleu */
-    color: white; /* Couleur du texte de l'en-tête */
-    padding: 20px;
-    text-align: center;
+header, footer, nav {
+    background-color: #007BFF; /* Couleur du fond en mode clair */
+    color: white;
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: #121212; /* Fond sombre */
+    color: #f4f4f4; /* Texte clair */
+}
+
+header.dark-mode, footer.dark-mode, nav.dark-mode {
+    background-color: #1f1f1f; /* Couleur du fond sombre */
+    color: #f4f4f4;
 }
 
 /* Section Projets */
