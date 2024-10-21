@@ -66,3 +66,32 @@ footer {
     bottom: 0;
     width: 100%; /* Largeur complète */
 }
+
+/* Styles de la barre de navigation */
+nav {
+    background-color: #007BFF; /* Couleur de fond de la barre de navigation */
+    padding: 15px; /* Espacement interne */
+    text-align: center; /* Centrer le contenu */
+}
+
+.nav-list {
+    list-style-type: none; /* Supprimer les puces de la liste */
+    margin: 0; /* Pas de marge */
+    padding: 0; /* Pas de rembourrage */
+}
+
+.nav-list li {
+    display: inline; /* Afficher les éléments de la liste en ligne */
+    margin-right: 20px; /* Espacement entre les liens */
+}
+
+.nav-list a {
+    color: white; /* Couleur du texte des liens */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: bold; /* Texte en gras */
+    transition: color 0.3s; /* Transition pour l'effet de couleur */
+}
+
+.nav-list a:hover {
+    color: #FFD700; /* Couleur dorée au survol */
+}
