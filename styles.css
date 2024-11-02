@@ -137,3 +137,31 @@ nav {
     color: #0056b3; /* Couleur plus foncée au survol */
     text-decoration: underline; /* Soulignement au survol */
 }
+.social-media a {
+    position: relative;
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.social-media a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #007bff;
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: bottom right;
+}
+
+.social-media a:hover {
+    color: #0056b3;
+}
+
+.social-media a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
