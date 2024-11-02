@@ -23,3 +23,19 @@ document.getElementById("mode-toggle").addEventListener("click", function () {
         localStorage.setItem("theme", "dark");
     }
 });
+
+
+document.querySelectorAll('.social-media a').forEach(link => {
+    link.addEventListener('click', function (event) {
+        event.preventDefault(); // Empêche le comportement par défaut
+        const url = this.href; // Récupère l'URL du lien
+
+        // Animation (vous pouvez ajouter une classe CSS ou un style)
+        this.classList.add('clicked');
+        
+        // Délai avant redirection
+        setTimeout(() => {
+            window.location.href = url; // Redirige après l'animation
+        }, 300); // Délai en millisecondes (300ms ici)
+    });
+});
