@@ -4,12 +4,6 @@ body {
     color: #333;
 }
 
-/* Mode sombre */
-body.dark-mode {
-    background-color: #121212;
-    color: #f4f4f4;
-}
-
 
 header, footer, nav {
     background-color: #007BFF; /* Couleur bleu */
@@ -18,15 +12,6 @@ header, footer, nav {
     text-align: center; /* Centrage du texte */
 }
 
-body.dark-mode {
-    background-color: #121212; /* Fond sombre */
-    color: #f4f4f4; /* Texte clair */
-}
-
-header.dark-mode, footer.dark-mode, nav.dark-mode {
-    background-color: #1f1f1f; /* Couleur du fond sombre */
-    color: #f4f4f4;
-}
 
 /* Section Projets */
 #projets {
@@ -82,10 +67,6 @@ header.dark-mode, footer.dark-mode, nav.dark-mode {
     border-radius: 5px;
 }
 
-.dark-mode #a-propos {
-    background-color: #333; /* Fond plus sombre en mode dark */
-    color: #f4f4f4; /* Couleur du texte en mode sombre */
-}
 
 /* Pied de page */
 footer {
@@ -135,10 +116,6 @@ nav {
     border-radius: 5px;
 }
 
-.dark-mode #contact {
-    background-color: #333; /* Fond plus sombre en mode dark */
-    color: #f4f4f4; /* Couleur du texte en mode sombre */
-}
 
 #contact h2 {
     color: #007BFF; /* Même couleur que le header */
