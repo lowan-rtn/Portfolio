@@ -49,6 +49,57 @@ header {
     border-radius: 8px;
 }
 
+/* Bouton slider pour le mode sombre */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 25px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6e8efb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
 /* Navigation */
 nav ul {
     list-style: none;
@@ -90,40 +141,6 @@ nav ul li a:hover {
     animation: fadeIn 1.5s forwards;
 }
 
-/* Bouton principal */
-.button {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #6e8efb;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1em;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background: #5a7be0;
-}
-
-/* Cartes de projets */
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.dark-mode .card {
-    background: #252525;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
 /* Adaptabilité aux mobiles */
 @media screen and (max-width: 768px) {
     header {
@@ -152,17 +169,5 @@ nav ul li a:hover {
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

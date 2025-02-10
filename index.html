@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>Bienvenue sur mon portfolio</h1>
@@ -16,16 +18,25 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <!-- Bouton pour changer de mode -->
-        <!-- button id="mode-toggle">Changer de mode</button -->
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+                <input type="checkbox" id="mode-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
     </header>
-    
+
     <main>
         <section id="a-propos">
             <h2>À propos de moi</h2>
-            <p>Je m'appelle Lowan Reutin--Rabillé, j'ai 17 ans et je suis étudiant en informatique. Passionné par la programmation et les nouvelles technologies, j'aime apprendre de nouvelles compétences et relever des défis. Mes projets reflètent mon intérêt pour la création de jeux et l'apprentissage des concepts informatiques.</p>
-            <p>Je suis à l'aise avec plusieurs langages de programmation, notamment Python. Mon objectif est de continuer à développer mes compétences et de participer à des projets intéressants.</p>
-        </section>       
+            <p>Je m'appelle Lowan Reutin--Rabillé, j'ai 17 ans et je suis étudiant en informatique. Passionné par la
+                programmation et les nouvelles technologies, j'aime apprendre de nouvelles compétences et relever des
+                défis. Mes projets reflètent mon intérêt pour la création de jeux et l'apprentissage des concepts
+                informatiques.</p>
+            <p>Je suis à l'aise avec plusieurs langages de programmation, notamment Python. Mon objectif est de
+                continuer à développer mes compétences et de participer à des projets intéressants.</p>
+        </section>
         <section id="projets" class="container">
             <h2>Mes Projets</h2>
             <div class="row">
@@ -33,8 +44,10 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Puissance 4</h5>
-                            <p class="card-text">Un jeu de Puissance 4 classique développé en Python. Ce projet met en avant la logique de programmation et l'interface utilisateur.</p>
-                            <a href="https://github.com/lololepro17/puissance_4" class="btn btn-primary" target="_blank">Voir le projet</a>
+                            <p class="card-text">Un jeu de Puissance 4 classique développé en Python. Ce projet met en
+                                avant la logique de programmation et l'interface utilisateur.</p>
+                            <a href="https://github.com/lololepro17/puissance_4" class="btn btn-primary"
+                                target="_blank">Voir le projet</a>
                         </div>
                     </div>
                 </div>
@@ -42,8 +55,11 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Motus</h5>
-                            <p class="card-text">Un jeu inspiré de l'émission de télévision Motus, où les joueurs doivent deviner un mot à partir d'indices. Développé en Python, ce projet explore la manipulation de chaînes et la logique de jeu.</p>
-                            <a href="https://github.com/lololepro17/Motus-PW3.6" class="btn btn-primary" target="_blank">Voir le projet</a>
+                            <p class="card-text">Un jeu inspiré de l'émission de télévision Motus, où les joueurs
+                                doivent deviner un mot à partir d'indices. Développé en Python, ce projet explore la
+                                manipulation de chaînes et la logique de jeu.</p>
+                            <a href="https://github.com/lololepro17/Motus-PW3.6" class="btn btn-primary"
+                                target="_blank">Voir le projet</a>
                         </div>
                     </div>
                 </div>
@@ -51,27 +67,35 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Cours TNSI</h5>
-                            <p class="card-text">Un dépôt contenant des cours et des ressources pour le cours de NSI (Numérique et Sciences Informatiques) en Terminale. Il couvre divers sujets liés à la programmation et à l'informatique.</p>
-                            <a href="https://github.com/lololepro17/Cours-TNSI" class="btn btn-primary" target="_blank">Voir le projet</a>
+                            <p class="card-text">Un dépôt contenant des cours et des ressources pour le cours de NSI
+                                (Numérique et Sciences Informatiques) en Terminale. Il couvre divers sujets liés à la
+                                programmation et à l'informatique.</p>
+                            <a href="https://github.com/lololepro17/Cours-TNSI" class="btn btn-primary"
+                                target="_blank">Voir le projet</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"> 
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">CryptoPriceForecast</h5>
-                        <p class="card-text">Un projet de prévision des prix des cryptomonnaies, utilisant des données historiques et des algorithmes de machine learning pour prédire les fluctuations de prix du BTC. Développé en Python.</p>
-                        <a href="https://github.com/lololepro17/CryptoPriceForecast" class="btn btn-primary" target="_blank">Voir le projet</a>
+                        <p class="card-text">Un projet de prévision des prix des cryptomonnaies, utilisant des données
+                            historiques et des algorithmes de machine learning pour prédire les fluctuations de prix du
+                            BTC. Développé en Python.</p>
+                        <a href="https://github.com/lololepro17/CryptoPriceForecast" class="btn btn-primary"
+                            target="_blank">Voir le projet</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"> 
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Visualisation d'Algorithmes de Tri</h5>
-                        <p class="card-text">Application web pour visualiser plusieurs algorithmes de tri, illustrant les étapes du tri en temps réel avec des animations.</p>
-                        <a href="https://github.com/lololepro17/sorted" class="btn btn-primary" target="_blank">Voir le projet</a>
+                        <p class="card-text">Application web pour visualiser plusieurs algorithmes de tri, illustrant
+                            les étapes du tri en temps réel avec des animations.</p>
+                        <a href="https://github.com/lololepro17/sorted" class="btn btn-primary" target="_blank">Voir le
+                            projet</a>
                     </div>
                 </div>
             </div>
@@ -82,11 +106,12 @@
                         <p class="card-text">
                             Application web interactive pour jouer au Sudoku.
                         </p>
-                        <a href="https://github.com/lololepro17/Flower" class="btn btn-primary" target="_blank">Voir le projet</a>
+                        <a href="https://github.com/lololepro17/Flower" class="btn btn-primary" target="_blank">Voir le
+                            projet</a>
                     </div>
                 </div>
             </div>
-                                    
+
         </section>
         <section id="contact" class="contact-card">
             <h2>Contactez-moi</h2>
@@ -96,10 +121,11 @@
                 <li><a href="www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">LinkedIn</a></li>
                 <li><a href="https://github.com/lololepro17" target="_blank">GitHub</a></li>
             </ul>
-        </section>        
-    <footer>
-        <p>&copy; 2025 Lowan Reutin--Rabillé</p>
-    </footer>
-<script src="scripts.js"></script>
+        </section>
+        <footer>
+            <p>&copy; 2025 Lowan Reutin--Rabillé</p>
+        </footer>
+        <script src="scripts.js"></script>
 </body>
+
 </html>
