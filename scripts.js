@@ -1,41 +1,22 @@
-// Détecter le mode de préférence du navigateur
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-// Vérifier si l'utilisateur a une préférence enregistrée
-const currentMode = localStorage.getItem("theme");
-
-if (currentMode === "dark") {
-    document.body.classList.add("dark-mode");
-} else if (currentMode === "light") {
-    document.body.classList.remove("dark-mode");
-} else if (prefersDarkScheme.matches) {
-    // Si pas de préférence enregistrée, utiliser le mode du navigateur
-    document.body.classList.add("dark-mode");
-}
-
-// Ajouter un écouteur d'événement au bouton
-document.getElementById("mode-toggle").addEventListener("click", function () {
-    if (document.body.classList.contains("dark-mode")) {
-        document.body.classList.remove("dark-mode");
-        localStorage.setItem("theme", "light");
-    } else {
-        document.body.classList.add("dark-mode");
-        localStorage.setItem("theme", "dark");
+document.addEventListener("DOMContentLoaded", function () {
+    const modeToggle = document.getElementById("mode-toggle");
+    const body = document.body;
+    
+    // Vérifier le mode actuel dans le localStorage
+    if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode");
+        modeToggle.classList.add("dark-mode");
     }
-});
 
-
-document.querySelectorAll('.social-media a').forEach(link => {
-    link.addEventListener('click', function (event) {
-        event.preventDefault(); // Empêche le comportement par défaut
-        const url = this.href; // Récupère l'URL du lien
-
-        // Animation (vous pouvez ajouter une classe CSS ou un style)
-        this.classList.add('clicked');
+    modeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+        modeToggle.classList.toggle("dark-mode");
         
-        // Délai avant redirection
-        setTimeout(() => {
-            window.location.href = url; // Redirige après l'animation
-        }, 300); // Délai en millisecondes (300ms ici)
+        // Enregistrer la préférence de l'utilisateur
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
     });
 });
