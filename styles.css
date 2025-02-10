@@ -157,7 +157,7 @@ footer {
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -174,7 +174,7 @@ footer {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #090f16;
     transform: translateY(-2px);
 }
 
