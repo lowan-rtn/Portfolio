@@ -1,167 +1,116 @@
-/* Mode clair (par défaut) */
+/* Importation de la police Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+/* Réinitialisation des marges et paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
 body {
     background-color: #f4f4f4;
     color: #333;
-}
-
-
-header, footer, nav {
-    background-color: #007BFF; /* Couleur bleu */
-    color: white; /* Couleur du texte */
-    padding: 20px;
-    text-align: center; /* Centrage du texte */
-}
-
-
-/* Section Projets */
-#projets {
-    margin: 20px;
-}
-
-.card {
-    background-color: white; /* Couleur de fond des cartes */
-    border: 1px solid #ddd; /* Bordure légère */
-    border-radius: 5px; /* Coins arrondis */
-    margin-bottom: 20px; /* Espace entre les cartes */
-    padding: 15px; /* Espacement interne */
-    transition: box-shadow 0.3s; /* Transition pour l'effet d'ombre */
-}
-
-.card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre au survol */
-}
-
-/* Boutons */
-.btn {
-    background-color: #28a745; /* Couleur verte pour les boutons */
-    color: white; /* Couleur du texte des boutons */
-    border: none; /* Pas de bordure */
-    padding: 10px 15px; /* Espacement interne */
-    text-decoration: none; /* Pas de soulignement */
-    border-radius: 5px; /* Coins arrondis */
-    cursor: pointer; /* Curseur pointer */
-}
-
-.btn:hover {
-    background-color: #218838; /* Couleur verte plus foncée au survol */
-}
-
-#mode-toggle {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#mode-toggle:hover {
-    background-color: #0056b3;
-}
-
-/* Section À propos */
-#a-propos {
-    background-color: #e9ecef; /* Fond gris clair */
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
-}
-
-
-/* Pied de page */
-footer {
-    text-align: center;
+    line-height: 1.6;
     padding: 10px;
-    background-color: #007BFF; /* Couleur bleu */
-    color: white; /* Couleur du texte */
-    position: relative; /* Pour le positionnement */
-    bottom: 0;
-    width: 100%; /* Largeur complète */
 }
 
-/* Styles de la barre de navigation */
-nav {
-    background-color: #007BFF; /* Couleur de fond de la barre de navigation */
-    padding: 15px; /* Espacement interne */
-    text-align: center; /* Centrer le contenu */
-}
-
-.nav-list {
-    list-style-type: none; /* Supprimer les puces de la liste */
-    margin: 0; /* Pas de marge */
-    padding: 0; /* Pas de rembourrage */
-}
-
-.nav-list li {
-    display: inline; /* Afficher les éléments de la liste en ligne */
-    margin-right: 20px; /* Espacement entre les liens */
-}
-
-.nav-list a {
-    color: white; /* Couleur du texte des liens */
-    text-decoration: none; /* Pas de soulignement */
-    font-weight: bold; /* Texte en gras */
-    transition: color 0.3s; /* Transition pour l'effet de couleur */
-}
-
-.nav-list a:hover {
-    color: #FFD700; /* Couleur dorée au survol */
-}
-
-/* Section Contact */
-#contact {
-    background-color: #f9f9f9; /* Couleur claire par défaut */
+/* Conteneur principal */
+.container {
+    max-width: 1100px;
+    margin: auto;
     padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-#contact h2 {
-    color: #007BFF; /* Même couleur que le header */
-    margin-bottom: 15px;
+/* En-tête */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border-radius: 8px;
 }
 
-#contact p {
-    font-size: 18px; /* Taille du texte du contact */
-    color: #333; /* Couleur du texte */
+/* Navigation */
+nav ul {
+    list-style: none;
+    display: flex;
 }
 
-#contact a {
-    color: #007BFF; /* Couleur du lien */
-    text-decoration: none; /* Supprimer le soulignement */
-    font-weight: bold; /* Texte en gras */
+nav ul li {
+    margin: 0 15px;
 }
 
-#contact a:hover {
-    color: #0056b3; /* Couleur plus foncée au survol */
-    text-decoration: underline; /* Soulignement au survol */
-}
-.social-media a {
-    position: relative;
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.social-media a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #007bff;
-    left: 0;
-    bottom: -2px;
-    transform: scaleX(0);
-    transition: transform 0.25s ease;
-    transform-origin: bottom right;
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
-.social-media a:hover {
-    color: #0056b3;
+/* Section principale */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
 }
 
-.social-media a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+/* Bouton principal */
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #6e8efb;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #5a7be0;
+}
+
+/* Adaptabilité aux mobiles */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .container {
+        padding: 15px;
+    }
 }
