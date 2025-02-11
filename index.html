@@ -30,15 +30,17 @@
       <!-- section À propos -->
       <section id="a-propos" class="my-5">
         <h2>À propos de moi</h2>
-        <p>
-          Je m'appelle Lowan Reutin--Rabillé, j'ai 17 ans et je suis étudiant en informatique. Passionné par la programmation
-          et les nouvelles technologies, j'aime apprendre de nouvelles compétences et relever des défis. Mes projets reflètent
-          mon intérêt pour la création de jeux et l'apprentissage des concepts informatiques.
-        </p>
-        <p>
-          Je suis à l'aise avec plusieurs langages de programmation, notamment Python. Mon objectif est de continuer à développer
-          mes compétences et de participer à des projets intéressants.
-        </p>
+        <div class="card bg-dark text-light p-4 shadow">
+          <p>
+            Salut ! Je suis Lowan Reutin--Rabillé, un passionné d'informatique et d'innovations technologiques. Depuis mon plus jeune âge,
+            le monde numérique m'inspire et me pousse à explorer constamment de nouveaux horizons. Maîtrisant divers langages – notamment
+            Python – j'aime transformer des idées en projets concrets, qu'il s'agisse de jeux interactifs ou d'applications novatrices.
+          </p>
+          <p>
+            Toujours en quête de défis stimulants, je m'efforce de repousser les limites de la créativité et de l'ingéniosité technique.
+            Parcourez mon portfolio pour découvrir mes réalisations, fruits d'une passion sincère pour le développement et la technologie.
+          </p>
+        </div>
       </section>
 
       <!-- section Projets -->
@@ -126,14 +128,32 @@
       <!-- section Contact -->
       <section id="contact" class="my-5">
         <h2>Contactez-moi</h2>
-        <p>
-          Mon email : <a href="mailto:lowan.rabille64@gmail.com">lowan.rabille64@gmail.com</a>
-        </p>
-        <p>Suivez-moi sur :</p>
-        <ul class="list-unstyled">
-          <li><a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">LinkedIn</a></li>
-          <li><a href="https://github.com/lololepro17" target="_blank">GitHub</a></li>
-        </ul>
+        <div class="card bg-dark text-light shadow p-4">
+          <p class="lead">
+            Vous avez une idée, une question ou simplement envie d'échanger ? Remplissez le formulaire ci-dessous et je vous répondrai dès que possible !
+          </p>
+          <form action="mailto:lowan.rtn@icloud.com" method="post" enctype="text/plain">
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Votre message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+          </form>
+          <hr>
+          <p class="mt-3">Vous préférez me contacter directement ? Retrouvez-moi sur :</p>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank" class="text-info">LinkedIn</a></li>
+            <li class="list-inline-item"><a href="https://github.com/lololepro17" target="_blank" class="text-info">GitHub</a></li>
+          </ul>
+        </div>
       </section>
     </main>
 

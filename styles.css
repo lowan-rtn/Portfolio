@@ -73,6 +73,23 @@
     border-color: #2980b9;
   }
   
+  /* style pour le formulaire de contact */
+  #contact form .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+  }
+  
+  #contact form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    box-shadow: none;
+  }
+  
+  #contact form label {
+    color: #bdc3c7;
+  }
+  
   /* style du footer */
   footer {
     background: rgba(0, 0, 0, 0.2);
