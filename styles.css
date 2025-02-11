@@ -1,223 +1,88 @@
-/* Importation de la police Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
-
-/* Réinitialisation des marges et paddings */
+/* reset et configuration de base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    padding: 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Mode sombre */
-.dark-mode {
-    background-color: #121212;
-    color: #f4f4f4;
-}
-
-/* Conteneur principal */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s;
-}
-.dark-mode .container {
-    background: #1e1e1e;
-}
-
-/* En-tête */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    border-radius: 8px;
-    flex-wrap: wrap;
-}
-
-header h1 {
-    flex: 1 1 100%;
+  }
+  
+  body {
+    /* fond sombre pour l'ensemble de la page */
+    background: #090a0f;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* pour que le contenu apparaisse au-dessus des particules */
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* style pour le header */
+  header {
+    padding: 20px 0;
     text-align: center;
-    font-size: 1.8em;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Pied de page */
-footer {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Présentation "À propos de moi" */
-.about-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #f8f9fa, #e0e0e0);
-    padding: 50px;
-    border-radius: 12px;
-    margin-top: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    flex-wrap: wrap;
-}
-
-.about-section img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 4px solid #6e8efb;
-}
-
-.about-content {
-    max-width: 600px;
-    text-align: left;
-}
-
-.about-content h2 {
-    font-size: 2em;
-    color: #6e8efb;
+  }
+  
+  header h1 {
     margin-bottom: 10px;
-}
-
-.about-content p {
-    font-size: 1.2em;
-    color: #333;
-    line-height: 1.5;
-}
-
-/* Contact section */
-.contact-card {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.contact-card:hover {
-    transform: scale(1.05);
-}
-
-.contact-card a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.contact-card a:hover {
-    text-decoration: underline;
-}
-
-/* Animations sur les projets */
-.card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Styles pour les liens avec la classe btn-primary */
-.btn-primary {
-    background-color: #78d7e3;
-    color: rgb(35, 70, 91);
-    padding: 2px 12px;
-    border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.9em;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #090f16;
-    transform: translateY(-2px);
-}
-
-/* Adaptabilité aux mobiles */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
+    font-size: 2.5rem;
+    color: #9b59b6; /* violet doux */
+  }
+  
+  /* style de la navigation */
+  .nav-link {
+    color: #ffffff !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #3498db !important; /* bleu profond */
+  }
+  
+  /* style des sections */
+  section {
+    margin-bottom: 50px;
+  }
+  
+  /* style des cartes de projet */
+  .card {
+    border: none;
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.5);
+  }
+  
+  /* style personnalisé pour les boutons */
+  .btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+  
+  /* style du footer */
+  footer {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+  }
+  
+  /* ajustement responsive */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
     }
-
-    nav ul {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .container {
-        padding: 15px;
-    }
-    
-    .row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .about-section {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .about-section img {
-        margin-bottom: 20px;
-    }
-    
-    .about-content {
-        text-align: center;
-    }
-}
+  }
+  
