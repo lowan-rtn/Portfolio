@@ -1,174 +1,509 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio de Lowan Reutin--Rabillé</title>
-  <!-- inclusion de bootstrap pour le responsive -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- inclusion du fichier css personnalisé -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Lowan Reutin-Rabillé - Développeur passionné par l'informatique et les innovations technologiques. Découvrez mes projets Python, web et machine learning.">
+    <meta name="keywords" content="développeur, portfolio, Python, web, machine learning, informatique, Lowan Reutin-Rabillé">
+    <meta name="author" content="Lowan Reutin-Rabillé">
+    <meta property="og:title" content="Portfolio - Lowan Reutin-Rabillé">
+    <meta property="og:description" content="Développeur passionné par l'informatique et les innovations technologiques">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lololepro17.github.io/Portfolio">
+    
+    <title>Lowan Reutin-Rabillé | Développeur & Passionné d'Informatique</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- conteneur pour particles.js (l’arrière-plan stellaire) -->
-  <div id="particles-js"></div>
-
-  <!-- zone de contenu principale, placée au-dessus des particules -->
-  <div class="container">
-    <header class="text-center py-4">
-      <h1>Bienvenue sur mon portfolio</h1>
-      <nav>
-        <ul class="nav justify-content-center">
-          <li class="nav-item"><a href="#a-propos" class="nav-link">À propos</a></li>
-          <li class="nav-item"><a href="#projets" class="nav-link">Projets</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <!-- section À propos -->
-      <section id="a-propos" class="my-5">
-        <h2>À propos de moi</h2>
-        <div class="card bg-dark text-light p-4 shadow">
-          <p>
-            Salut ! Je suis Lowan Reutin--Rabillé, un passionné d'informatique et d'innovations technologiques. Depuis mon plus jeune âge,
-            le monde numérique m'inspire et me pousse à explorer constamment de nouveaux horizons. Maîtrisant divers langages – notamment
-            Python – j'aime transformer des idées en projets concrets, qu'il s'agisse de jeux interactifs ou d'applications novatrices.
-          </p>
-          <p>
-            Toujours en quête de défis stimulants, je m'efforce de repousser les limites de la créativité et de l'ingéniosité technique.
-            Parcourez mon portfolio pour découvrir mes réalisations, fruits d'une passion sincère pour le développement et la technologie.
-          </p>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">LR</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      <!-- section Projets -->
-      <section id="projets" class="my-5">
-        <h2>Mes Projets</h2>
-        <div class="row">
-          <!-- projet Puissance 4 -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">Puissance 4</h5>
-                <p class="card-text">
-                  Un jeu de Puissance 4 classique développé en Python. Ce projet met en avant la logique de programmation et l'interface utilisateur.
+    <!-- Section Hero -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Lowan Reutin-Rabillé</span>
+                </h1>
+                <p class="hero-subtitle">Développeur passionné par l'informatique</p>
+                <p class="hero-description">
+                    Je transforme des idées en projets concrets, de la logique de programmation 
+                    aux innovations technologiques les plus avancées.
                 </p>
-                <a href="https://github.com/lololepro17/puissance_4" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
             </div>
-          </div>
-          <!-- projet Motus -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">Motus</h5>
-                <p class="card-text">
-                  Un jeu inspiré de l'émission de télévision Motus, où les joueurs doivent deviner un mot à partir d'indices.
-                  Développé en Python, ce projet explore la manipulation de chaînes et la logique de jeu.
-                </p>
-                <a href="https://github.com/lololepro17/Motus-PW3.6" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
+            <div class="hero-visual">
+                <div class="code-animation">
+                    <div class="code-line">
+                        <span class="code-keyword">def</span> 
+                        <span class="code-function">create_future</span>
+                        <span class="code-punctuation">():</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="code-indent">    </span>
+                        <span class="code-keyword">return</span> 
+                        <span class="code-string">"innovation"</span>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- projet Cours TNSI -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">Cours TNSI</h5>
-                <p class="card-text">
-                  Un dépôt contenant des cours et des ressources pour le cours de NSI (Numérique et Sciences Informatiques) en Terminale.
-                  Il couvre divers sujets liés à la programmation et à l'informatique.
-                </p>
-                <a href="https://github.com/lololepro17/Cours-TNSI" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
-            </div>
-          </div>
-          <!-- projet CryptoPriceForecast -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">CryptoPriceForecast</h5>
-                <p class="card-text">
-                  Un projet de prévision des prix des cryptomonnaies, utilisant des données historiques et des algorithmes de machine learning
-                  pour prédire les fluctuations de prix du BTC. Développé en Python.
-                </p>
-                <a href="https://github.com/lololepro17/CryptoPriceForecast" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
-            </div>
-          </div>
-          <!-- projet Visualisation d'Algorithmes de Tri -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">Visualisation d'Algorithmes de Tri</h5>
-                <p class="card-text">
-                  Application web pour visualiser plusieurs algorithmes de tri, illustrant les étapes du tri en temps réel avec des animations.
-                </p>
-                <a href="https://github.com/lololepro17/sorted" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
-            </div>
-          </div>
-          <!-- projet Jeu de Sudoku -->
-          <div class="col-md-4 mb-4">
-            <div class="card bg-dark text-light shadow">
-              <div class="card-body">
-                <h5 class="card-title">Jeu de Sudoku</h5>
-                <p class="card-text">
-                  Application web interactive pour jouer au Sudoku.
-                </p>
-                <a href="https://github.com/lololepro17/Flower" class="btn btn-primary" target="_blank">Voir le projet</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-
-      <!-- section Contact -->
-      <section id="contact" class="my-5">
-        <h2>Contactez-moi</h2>
-        <div class="card bg-dark text-light shadow p-4">
-          <p class="lead">
-            Vous avez une idée, une question ou simplement envie d'échanger ? Remplissez le formulaire ci-dessous et je vous répondrai dès que possible !
-          </p>
-          <form action="mailto:lowan.rtn@icloud.com" method="post" enctype="text/plain">
-            <div class="form-group">
-              <label for="nom">Nom</label>
-              <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" required>
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Votre message" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-          </form>
-          <hr>
-          <p class="mt-3">Vous préférez me contacter directement ? Retrouvez-moi sur :</p>
-          <ul class="list-inline">
-            <li class="list-inline-item"><a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank" class="text-info">LinkedIn</a></li>
-            <li class="list-inline-item"><a href="https://github.com/lololepro17" target="_blank" class="text-info">GitHub</a></li>
-          </ul>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
         </div>
-      </section>
-    </main>
+    </section>
 
-    <footer class="text-center py-3">
-      <p>&copy; 2025 Lowan Reutin--Rabillé</p>
+    <!-- Section À propos -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        Passionné d'informatique depuis mon plus jeune âge, je maîtrise divers langages 
+                        de programmation, notamment <strong>Python</strong>, et j'aime transformer des idées 
+                        en projets concrets. Mon expertise s'étend des jeux interactifs aux applications 
+                        novatrices, en passant par le machine learning et l'analyse de données.
+                    </p>
+                    <p class="about-description">
+                        Toujours en quête de défis stimulants, je m'efforce de repousser les limites 
+                        de la créativité et de l'ingéniosité technique. Chaque projet est une opportunité 
+                        d'apprendre, d'innover et de créer quelque chose d'unique.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">Projets réalisés</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Passion</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Mes Compétences</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-code"></i>
+                        Langages de Programmation
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML/CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-brain"></i>
+                        Technologies & Frameworks
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Machine Learning</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git/GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">APIs & Web Services</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <i class="fas fa-lightbulb"></i>
+                        Compétences Spécialisées
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Algorithmes & Structures</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Analyse de Données</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Interface Utilisateur</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <div class="projects-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+            </div>
+            <div class="projects-grid">
+                <!-- Projet Puissance 4 -->
+                <div class="project-card" data-category="python">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Puissance 4</h3>
+                        <p class="project-description">
+                            Jeu classique développé en Python avec interface utilisateur intuitive. 
+                            Démonstration de logique de programmation et d'algorithmes de jeu.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Logique de jeu</span>
+                            <span class="tech-tag">Interface utilisateur</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/puissance_4" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Motus -->
+                <div class="project-card" data-category="python">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Motus</h3>
+                        <p class="project-description">
+                            Jeu inspiré de l'émission TV avec système d'indices intelligents. 
+                            Exploration de la manipulation de chaînes et de la logique de jeu.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Manipulation de chaînes</span>
+                            <span class="tech-tag">Logique de jeu</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/Motus-PW3.6" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet CryptoPriceForecast -->
+                <div class="project-card" data-category="ml">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">CryptoPriceForecast</h3>
+                        <p class="project-description">
+                            Système de prédiction des prix des cryptomonnaies utilisant le machine learning. 
+                            Analyse de données historiques pour prédire les fluctuations BTC.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">APIs</span>
+                            <span class="tech-tag">Analyse de données</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/CryptoPriceForecast" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Visualisation Algorithmes -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-sort-amount-up"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Visualisation Algorithmes de Tri</h3>
+                        <p class="project-description">
+                            Application web interactive pour visualiser les algorithmes de tri en temps réel. 
+                            Démonstration pédagogique avec animations fluides.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Algorithmes</span>
+                            <span class="tech-tag">Visualisation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/sorted" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Sudoku -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-th"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Jeu de Sudoku</h3>
+                        <p class="project-description">
+                            Application web interactive pour jouer au Sudoku avec interface moderne. 
+                            Logique de jeu complète et validation en temps réel.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Logique de jeu</span>
+                            <span class="tech-tag">Interface utilisateur</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/Flower" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet Cours TNSI -->
+                <div class="project-card" data-category="python">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Cours TNSI</h3>
+                        <p class="project-description">
+                            Dépôt de ressources pédagogiques pour le cours NSI en Terminale. 
+                            Documentation complète et exemples pratiques.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Documentation</span>
+                            <span class="tech-tag">Pédagogie</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/lololepro17/Cours-TNSI" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-moi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Discutons de vos projets</h3>
+                    <p>
+                        Vous avez une idée, une question ou simplement envie d'échanger ? 
+                        Je suis toujours ouvert aux nouvelles opportunités et collaborations.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:lowan.rtn@icloud.com">lowan.rtn@icloud.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">Lowan Reutin-Rabillé</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/lololepro17" target="_blank">@lololepro17</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lowan Reutin-Rabillé</h3>
+                    <p>Développeur passionné par l'informatique et les innovations technologiques</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#projects">Projets</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/lololepro17" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lowan Reutin-Rabillé. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <!-- inclusion des scripts JS -->
-  <!-- jQuery et bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- particles.js pour les effets stellaire -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <!-- script JS personnalisé -->
-  <script src="scripts.js"></script>
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
 </body>
 </html>
