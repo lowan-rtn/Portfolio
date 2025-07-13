@@ -404,14 +404,35 @@
         function calculate() {
             const input = document.getElementById('calcInput').value;
             try {
-                const result = eval(input);
-                document.getElementById('calcOutput').innerHTML = `
-                    <input type="text" id="calcInput" value="${input} = ${result}" style="width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;">
-                `;
+                // Validation et nettoyage de l'entrée
+                const sanitizedInput = input.replace(/[^0-9+\-*/().\s]/g, '');
+                if (sanitizedInput !== input) {
+                    throw new Error('Caractères non autorisés');
+                }
+                
+                // Calcul sécurisé avec Function (plus sûr que eval)
+                const result = Function('"use strict"; return (' + sanitizedInput + ')')();
+                
+                // Affichage sécurisé avec textContent
+                const outputElement = document.getElementById('calcOutput');
+                const inputElement = document.createElement('input');
+                inputElement.type = 'text';
+                inputElement.value = `${input} = ${result}`;
+                inputElement.style.cssText = 'width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;';
+                inputElement.id = 'calcInput';
+                
+                outputElement.textContent = '';
+                outputElement.appendChild(inputElement);
             } catch (error) {
-                document.getElementById('calcOutput').innerHTML = `
-                    <input type="text" id="calcInput" value="Erreur de syntaxe" style="width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;">
-                `;
+                const outputElement = document.getElementById('calcOutput');
+                const inputElement = document.createElement('input');
+                inputElement.type = 'text';
+                inputElement.value = 'Erreur de syntaxe';
+                inputElement.style.cssText = 'width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;';
+                inputElement.id = 'calcInput';
+                
+                outputElement.textContent = '';
+                outputElement.appendChild(inputElement);
             }
         }
 
@@ -425,12 +446,22 @@
             }
             
             const colorOutput = document.getElementById('colorOutput');
-            colorOutput.innerHTML = colors.map(color => 
-                `<div style="display: flex; align-items: center; margin: 5px 0;">
-                    <div style="width: 30px; height: 30px; background: ${color}; border-radius: 4px; margin-right: 10px;"></div>
-                    <span>${color}</span>
-                </div>`
-            ).join('');
+            colorOutput.textContent = '';
+            
+            colors.forEach(color => {
+                const colorDiv = document.createElement('div');
+                colorDiv.style.cssText = 'display: flex; align-items: center; margin: 5px 0;';
+                
+                const colorBox = document.createElement('div');
+                colorBox.style.cssText = 'width: 30px; height: 30px; background: ' + color + '; border-radius: 4px; margin-right: 10px;';
+                
+                const colorSpan = document.createElement('span');
+                colorSpan.textContent = color;
+                
+                colorDiv.appendChild(colorBox);
+                colorDiv.appendChild(colorSpan);
+                colorOutput.appendChild(colorDiv);
+            });
         }
 
         function copyColors() {
