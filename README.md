@@ -8,9 +8,10 @@ Portfolio moderne et professionnel présentant mes compétences en développemen
 
 ### 🎨 Design moderne
 - **Design épuré** : Interface minimaliste et professionnelle
-- **Thème sombre** : Palette de couleurs moderne avec gradients
+- **Thème sombre/clair** : Palette de couleurs moderne avec gradients
 - **Responsive** : Optimisé pour tous les appareils
 - **Animations fluides** : Transitions et effets visuels subtils
+- **Animations particles.js** : Effets stellaires interactifs
 
 ### 🔧 Technologies utilisées
 - **HTML5** : Structure sémantique et accessible
@@ -18,6 +19,7 @@ Portfolio moderne et professionnel présentant mes compétences en développemen
 - **JavaScript ES6+** : Modules, async/await, Intersection Observer
 - **Font Awesome** : Icônes modernes
 - **Google Fonts** : Typographie Inter
+- **Particles.js** : Animations de particules
 
 ### 📱 Fonctionnalités interactives
 - **Navigation fluide** : Menu hamburger mobile, scroll smooth
@@ -26,6 +28,15 @@ Portfolio moderne et professionnel présentant mes compétences en développemen
 - **Barres de compétences** : Animation des progress bars
 - **Formulaire de contact** : Validation et notifications
 - **Compteurs animés** : Statistiques avec animation
+- **Compteur de visiteurs** : Suivi en temps réel
+- **Mode sombre/clair** : Persistance des préférences
+
+### 🚀 Pages supplémentaires
+- **Blog technique** : Articles sur le développement
+- **Démonstrations interactives** : Outils et jeux en ligne
+- **Visualisation d'algorithmes** : Tri en temps réel
+- **Quiz technique** : Test de connaissances
+- **Générateur de couleurs** : Palettes harmonieuses
 
 ## 🛠️ Installation et utilisation
 
@@ -60,8 +71,11 @@ php -S localhost:8000
 ```
 Portfolio/
 ├── index.html              # Page principale
+├── blog.html               # Blog technique
+├── demo.html               # Démonstrations interactives
 ├── styles.css              # Styles CSS modernes
 ├── scripts.js              # JavaScript interactif
+├── particles-config.js     # Configuration particles.js
 ├── assets/
 │   └── images/            # Images et ressources
 ├── portfolio-info.md       # Documentation complète

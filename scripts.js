@@ -6,6 +6,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 const contactForm = document.getElementById('contactForm');
+const themeToggle = document.getElementById('themeToggle');
 
 // ===== NAVIGATION ET MENU MOBILE =====
 function initNavigation() {
@@ -168,48 +169,72 @@ function isValidEmail(email) {
 }
 
 // ===== NOTIFICATIONS =====
-function showNotification(message, type = 'info') {
-    // Supprimer les notifications existantes
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
-
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-            <span>${message}</span>
+function showNotification(message, type = 'info', title = '') {
+    // Créer le conteneur de toast s'il n'existe pas
+    let toastContainer = document.querySelector('.toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.className = 'toast-container';
+        document.body.appendChild(toastContainer);
+    }
+    
+    // Créer le toast
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icon = getNotificationIcon(type);
+    const titleText = title || getNotificationTitle(type);
+    
+    toast.innerHTML = `
+        <i class="fas ${icon} toast-icon"></i>
+        <div class="toast-content">
+            <div class="toast-title">${titleText}</div>
+            <div class="toast-message">${message}</div>
         </div>
+        <button class="toast-close" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
     `;
-
-    // Styles pour la notification
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#2ecc71' : type === 'error' ? '#e74c3c' : '#3498db'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        z-index: 10000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 400px;
-    `;
-
-    document.body.appendChild(notification);
-
+    
+    // Ajouter le toast
+    toastContainer.appendChild(toast);
+    
     // Animation d'entrée
     setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
+        toast.classList.add('show');
     }, 100);
-
-    // Auto-suppression après 5 secondes
+    
+    // Supprimer automatiquement après 5 secondes
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
+        if (toast.parentElement) {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 300);
+        }
     }, 5000);
+}
+
+function getNotificationIcon(type) {
+    switch (type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        case 'info': return 'fa-info-circle';
+        default: return 'fa-info-circle';
+    }
+}
+
+function getNotificationTitle(type) {
+    switch (type) {
+        case 'success': return 'Succès';
+        case 'error': return 'Erreur';
+        case 'warning': return 'Attention';
+        case 'info': return 'Information';
+        default: return 'Notification';
+    }
 }
 
 // ===== ANIMATION DU CODE =====
@@ -294,6 +319,14 @@ function initSmoothScroll() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // Fermer le menu mobile si ouvert
+                const navMenu = document.getElementById('nav-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const hamburger = document.getElementById('hamburger');
+                    if (hamburger) hamburger.classList.remove('active');
+                }
             }
         });
     });
@@ -366,20 +399,262 @@ function throttle(func, limit) {
     };
 }
 
+// ===== GESTION DU THÈME =====
+function initTheme() {
+    try {
+        // Récupérer le thème sauvegardé ou utiliser le thème par défaut
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        // Gestionnaire d'événement pour le toggle
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            
+            // Gérer le localStorage avec try-catch pour les restrictions de sécurité
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (error) {
+                console.log('Impossible de sauvegarder le thème (mode privé ou restrictions)');
+            }
+            
+            updateThemeIcon(newTheme);
+            
+            // Animation de transition
+            document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 300);
+        });
+    } catch (error) {
+        console.log('Erreur lors de l\'initialisation du thème:', error);
+        // Fallback : forcer le thème sombre
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+}
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    if (theme === 'light') {
+        icon.className = 'fas fa-sun';
+    } else {
+        icon.className = 'fas fa-moon';
+    }
+}
+
+// ===== STATISTIQUES GITHUB =====
+async function initGitHubStats() {
+    try {
+        // Vérifier si on est en mode fichier local
+        if (window.location.protocol === 'file:') {
+            console.log('Mode fichier local détecté, utilisation des valeurs par défaut');
+            setDefaultGitHubStats();
+            return;
+        }
+
+        const username = 'lololepro17';
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const userData = await response.json();
+        
+        // Mettre à jour les statistiques
+        document.getElementById('repoCount').textContent = userData.public_repos || '--';
+        document.getElementById('starCount').textContent = '--'; // Nécessite une API différente
+        document.getElementById('forkCount').textContent = '--'; // Nécessite une API différente
+        
+        // Animation des nombres
+        animateNumber('repoCount', userData.public_repos || 0);
+        
+    } catch (error) {
+        console.log('Erreur lors du chargement des stats GitHub:', error);
+        setDefaultGitHubStats();
+    }
+}
+
+function setDefaultGitHubStats() {
+    // En cas d'erreur ou mode local, afficher des valeurs par défaut
+    const repoCountElement = document.getElementById('repoCount');
+    const starCountElement = document.getElementById('starCount');
+    const forkCountElement = document.getElementById('forkCount');
+    
+    if (repoCountElement) repoCountElement.textContent = '6+';
+    if (starCountElement) starCountElement.textContent = '--';
+    if (forkCountElement) forkCountElement.textContent = '--';
+}
+
+// ===== COMPTEUR DE VISITEURS =====
+function initVisitorCounter() {
+    const visitorCountElement = document.getElementById('visitorCount');
+    if (!visitorCountElement) return;
+
+    // Récupérer le compteur depuis localStorage
+    let visitorCount = localStorage.getItem('visitorCount') || 0;
+    visitorCount = parseInt(visitorCount) + 1;
+    
+    // Sauvegarder le nouveau compteur
+    try {
+        localStorage.setItem('visitorCount', visitorCount.toString());
+    } catch (error) {
+        console.log('Impossible de sauvegarder le compteur de visiteurs');
+    }
+
+    // Animer le compteur
+    animateNumber('visitorCount', visitorCount);
+}
+
+// ===== RECHERCHE BLOG =====
+function initBlogSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    if (!searchInput) return; // Pas sur la page blog
+    
+    let currentFilter = 'all';
+    let searchTerm = '';
+    
+    // Données des articles pour la recherche
+    const articlesData = [
+        {
+            element: blogCards[0],
+            title: 'Découverte du Machine Learning avec Python',
+            content: 'Exploration des bases du machine learning à travers mon projet CryptoPriceForecast. Découvrez comment j\'ai implémenté des algorithmes de prédiction pour les cryptomonnaies.',
+            tags: ['Machine Learning', 'Python', 'Data Science'],
+            category: 'python'
+        },
+        {
+            element: blogCards[1],
+            title: 'Créer des jeux en Python : Mon expérience',
+            content: 'Retour sur la création de mes jeux Puissance 4 et Motus. Les défis techniques rencontrés et les solutions apportées.',
+            tags: ['Python', 'Jeux', 'Logique'],
+            category: 'python'
+        },
+        {
+            element: blogCards[2],
+            title: 'Design moderne pour portfolio développeur',
+            content: 'Comment j\'ai créé ce portfolio avec des animations fluides et un design responsive. Les techniques CSS et JavaScript utilisées.',
+            tags: ['CSS', 'JavaScript', 'Design'],
+            category: 'web'
+        },
+        {
+            element: blogCards[3],
+            title: 'Visualisation d\'algorithmes de tri',
+            content: 'Création d\'une application web pour visualiser les algorithmes de tri en temps réel. L\'importance de la pédagogie dans le développement.',
+            tags: ['Algorithmes', 'Visualisation', 'Pédagogie'],
+            category: 'algorithmes'
+        }
+    ];
+    
+    // Fonction de recherche
+    function performSearch() {
+        const searchLower = searchTerm.toLowerCase();
+        const filterLower = currentFilter.toLowerCase();
+        
+        articlesData.forEach((article, index) => {
+            const matchesSearch = searchTerm === '' || 
+                article.title.toLowerCase().includes(searchLower) ||
+                article.content.toLowerCase().includes(searchLower) ||
+                article.tags.some(tag => tag.toLowerCase().includes(searchLower));
+            
+            const matchesFilter = currentFilter === 'all' || article.category === filterLower;
+            
+            if (matchesSearch && matchesFilter) {
+                article.element.classList.remove('hidden');
+                article.element.classList.add('fade-in');
+            } else {
+                article.element.classList.add('hidden');
+                article.element.classList.remove('fade-in');
+            }
+        });
+        
+        // Afficher/masquer le bouton clear
+        clearSearch.style.display = searchTerm ? 'block' : 'none';
+    }
+    
+    // Événements de recherche
+    searchInput.addEventListener('input', (e) => {
+        searchTerm = e.target.value;
+        performSearch();
+    });
+    
+    clearSearch.addEventListener('click', () => {
+        searchInput.value = '';
+        searchTerm = '';
+        performSearch();
+        searchInput.focus();
+    });
+    
+    // Événements de filtres
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            performSearch();
+        });
+    });
+    
+    // Recherche avec Entrée
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
+    });
+}
+
+function animateNumber(elementId, target) {
+    const element = document.getElementById(elementId);
+    const current = parseInt(element.textContent) || 0;
+    const increment = (target - current) / 30;
+    let currentValue = current;
+    
+    const timer = setInterval(() => {
+        currentValue += increment;
+        if ((increment > 0 && currentValue >= target) || 
+            (increment < 0 && currentValue <= target)) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(currentValue);
+        }
+    }, 50);
+}
+
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Portfolio initialisé');
     
-    // Initialiser toutes les fonctionnalités
-    initNavigation();
-    initProjectFilters();
+    // Vérifier que tous les éléments nécessaires existent
+    const requiredElements = {
+        navbar: document.getElementById('navbar'),
+        hamburger: document.getElementById('hamburger'),
+        navMenu: document.getElementById('nav-menu'),
+        themeToggle: document.getElementById('themeToggle'),
+        contactForm: document.getElementById('contactForm')
+    };
+    
+    // Initialiser toutes les fonctionnalités avec vérification
+    if (requiredElements.themeToggle) initTheme();
+    if (requiredElements.navbar) initNavigation();
+    if (document.querySelectorAll('.filter-btn').length > 0) initProjectFilters();
     initScrollAnimations();
-    initSkillBars();
-    initContactForm();
+    if (document.querySelectorAll('.skill-progress').length > 0) initSkillBars();
+    if (requiredElements.contactForm) initContactForm();
     initCodeAnimation();
-    initCounters();
+    if (document.querySelectorAll('.stat-number').length > 0) initCounters();
     initTypingEffect();
     initSmoothScroll();
+    initGitHubStats();
+    initVisitorCounter();
+    initBlogSearch();
     initPerformanceOptimizations();
     initErrorHandling();
 

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démonstrations - Lowan Reutin-Rabillé</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-section {
+            padding: var(--spacing-xxl) 0;
+            background: var(--bg-primary);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .demo-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-normal);
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-primary);
+        }
+        
+        .demo-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .demo-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 500;
+        }
+        
+        .demo-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .demo-output {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            font-family: var(--font-mono);
+            color: var(--text-primary);
+            min-height: 100px;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+        
+        .sorting-visualization {
+            display: flex;
+            align-items: end;
+            height: 150px;
+            gap: 2px;
+            margin: var(--spacing-lg) 0;
+        }
+        
+        .sort-bar {
+            background: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            min-width: 20px;
+        }
+        
+        .sort-bar.comparing {
+            background: var(--accent-color);
+        }
+        
+        .sort-bar.sorted {
+            background: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">LR</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="demo.html" class="nav-link active">Démos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cv.html" class="nav-link">CV</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1 class="section-title">Démonstrations Interactives</h1>
+            <p class="blog-subtitle">Testez mes compétences en temps réel</p>
+        </div>
+    </section>
+
+    <!-- Démonstrations -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-grid">
+                <!-- Démo 1: Algorithmes de tri -->
+                <div class="demo-card">
+                    <h3 class="demo-title">Visualisation d'Algorithmes de Tri</h3>
+                    <p class="demo-description">
+                        Visualisez différents algorithmes de tri en action. 
+                        Comparez leur performance et leur comportement.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="demo-btn" onclick="generateArray()">Nouveau tableau</button>
+                        <button class="demo-btn" onclick="bubbleSort()">Tri à bulles</button>
+                        <button class="demo-btn" onclick="quickSort()">Tri rapide</button>
+                        <button class="demo-btn" onclick="resetSort()">Reset</button>
+                    </div>
+                    <div class="sorting-visualization" id="sortingViz"></div>
+                    <div class="demo-output" id="sortOutput">
+                        Cliquez sur "Nouveau tableau" pour commencer...
+                    </div>
+                </div>
+
+                <!-- Démo 2: Calculatrice -->
+                <div class="demo-card">
+                    <h3 class="demo-title">Calculatrice Interactive</h3>
+                    <p class="demo-description">
+                        Une calculatrice simple pour tester les interactions JavaScript.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="demo-btn" onclick="clearCalc()">Clear</button>
+                        <button class="demo-btn" onclick="calculate()">Calculer</button>
+                    </div>
+                    <div class="demo-output" id="calcOutput">
+                        <input type="text" id="calcInput" placeholder="Entrez une expression (ex: 2+3*4)" style="width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;">
+                    </div>
+                </div>
+
+                <!-- Démo 3: Générateur de couleurs -->
+                <div class="demo-card">
+                    <h3 class="demo-title">Générateur de Couleurs</h3>
+                    <p class="demo-description">
+                        Générez des palettes de couleurs harmonieuses pour vos projets.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="demo-btn" onclick="generateColors()">Générer</button>
+                        <button class="demo-btn" onclick="copyColors()">Copier</button>
+                    </div>
+                    <div class="demo-output" id="colorOutput">
+                        Cliquez sur "Générer" pour créer une palette...
+                    </div>
+                </div>
+
+                <!-- Démo 4: Quiz technique -->
+                <div class="demo-card">
+                    <h3 class="demo-title">Quiz Technique</h3>
+                    <p class="demo-description">
+                        Testez vos connaissances en programmation avec ce quiz interactif.
+                    </p>
+                    <div class="demo-controls">
+                        <button class="demo-btn" onclick="startQuiz()">Commencer</button>
+                        <button class="demo-btn" onclick="nextQuestion()">Suivant</button>
+                    </div>
+                    <div class="demo-output" id="quizOutput">
+                        Cliquez sur "Commencer" pour démarrer le quiz...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lowan Reutin-Rabillé</h3>
+                    <p>Développeur passionné par l'informatique et les innovations technologiques</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="index.html#home">Accueil</a></li>
+                        <li><a href="index.html#about">À propos</a></li>
+                        <li><a href="index.html#projects">Projets</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="demo.html">Démos</a></li>
+                        <li><a href="cv.html">CV</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/lololepro17" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lowan Reutin-Rabillé. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        // Variables pour les démonstrations
+        let currentArray = [];
+        let sortingInProgress = false;
+        let quizQuestions = [
+            {
+                question: "Quel langage de programmation est le plus utilisé pour le machine learning ?",
+                options: ["Java", "Python", "C++", "JavaScript"],
+                correct: 1
+            },
+            {
+                question: "Qu'est-ce que HTML ?",
+                options: ["Un langage de programmation", "Un langage de balisage", "Un framework CSS", "Un protocole"],
+                correct: 1
+            },
+            {
+                question: "Quel algorithme de tri a la meilleure complexité moyenne ?",
+                options: ["Tri à bulles", "Tri rapide", "Tri par insertion", "Tri par sélection"],
+                correct: 1
+            }
+        ];
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        // Fonctions pour les démonstrations
+        function generateArray() {
+            currentArray = Array.from({length: 20}, () => Math.floor(Math.random() * 100) + 1);
+            visualizeArray();
+            document.getElementById('sortOutput').textContent = 'Tableau généré : ' + currentArray.join(', ');
+        }
+
+        function visualizeArray() {
+            const viz = document.getElementById('sortingViz');
+            viz.innerHTML = '';
+            const maxHeight = 150;
+            const maxValue = Math.max(...currentArray);
+            
+            currentArray.forEach((value, index) => {
+                const bar = document.createElement('div');
+                bar.className = 'sort-bar';
+                bar.style.height = (value / maxValue * maxHeight) + 'px';
+                bar.style.width = '20px';
+                bar.setAttribute('data-value', value);
+                viz.appendChild(bar);
+            });
+        }
+
+        async function bubbleSort() {
+            if (sortingInProgress) return;
+            sortingInProgress = true;
+            
+            const array = [...currentArray];
+            const n = array.length;
+            
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (array[j] > array[j + 1]) {
+                        // Échanger les éléments
+                        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                        
+                        // Mettre à jour la visualisation
+                        currentArray = [...array];
+                        visualizeArray();
+                        
+                        // Marquer les barres comparées
+                        const bars = document.querySelectorAll('.sort-bar');
+                        bars[j].classList.add('comparing');
+                        bars[j + 1].classList.add('comparing');
+                        
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                        
+                        bars[j].classList.remove('comparing');
+                        bars[j + 1].classList.remove('comparing');
+                    }
+                }
+            }
+            
+            // Marquer comme trié
+            document.querySelectorAll('.sort-bar').forEach(bar => bar.classList.add('sorted'));
+            document.getElementById('sortOutput').textContent = 'Tri terminé ! Tableau trié : ' + array.join(', ');
+            sortingInProgress = false;
+        }
+
+        function quickSort() {
+            if (sortingInProgress) return;
+            sortingInProgress = true;
+            
+            const array = [...currentArray];
+            quickSortHelper(array, 0, array.length - 1);
+            
+            document.getElementById('sortOutput').textContent = 'Tri rapide terminé ! Tableau trié : ' + array.join(', ');
+            sortingInProgress = false;
+        }
+
+        async function quickSortHelper(array, low, high) {
+            if (low < high) {
+                const pi = await partition(array, low, high);
+                await quickSortHelper(array, low, pi - 1);
+                await quickSortHelper(array, pi + 1, high);
+            }
+        }
+
+        async function partition(array, low, high) {
+            const pivot = array[high];
+            let i = low - 1;
+            
+            for (let j = low; j < high; j++) {
+                if (array[j] < pivot) {
+                    i++;
+                    [array[i], array[j]] = [array[j], array[i]];
+                    currentArray = [...array];
+                    visualizeArray();
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                }
+            }
+            
+            [array[i + 1], array[high]] = [array[high], array[i + 1]];
+            currentArray = [...array];
+            visualizeArray();
+            return i + 1;
+        }
+
+        function resetSort() {
+            currentArray = [];
+            document.getElementById('sortingViz').innerHTML = '';
+            document.getElementById('sortOutput').textContent = 'Cliquez sur "Nouveau tableau" pour commencer...';
+            sortingInProgress = false;
+        }
+
+        function clearCalc() {
+            document.getElementById('calcInput').value = '';
+        }
+
+        function calculate() {
+            const input = document.getElementById('calcInput').value;
+            try {
+                const result = eval(input);
+                document.getElementById('calcOutput').innerHTML = `
+                    <input type="text" id="calcInput" value="${input} = ${result}" style="width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;">
+                `;
+            } catch (error) {
+                document.getElementById('calcOutput').innerHTML = `
+                    <input type="text" id="calcInput" value="Erreur de syntaxe" style="width: 100%; background: transparent; border: none; color: inherit; font-family: inherit;">
+                `;
+            }
+        }
+
+        function generateColors() {
+            const colors = [];
+            for (let i = 0; i < 5; i++) {
+                const hue = Math.floor(Math.random() * 360);
+                const saturation = Math.floor(Math.random() * 30) + 70;
+                const lightness = Math.floor(Math.random() * 20) + 40;
+                colors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
+            }
+            
+            const colorOutput = document.getElementById('colorOutput');
+            colorOutput.innerHTML = colors.map(color => 
+                `<div style="display: flex; align-items: center; margin: 5px 0;">
+                    <div style="width: 30px; height: 30px; background: ${color}; border-radius: 4px; margin-right: 10px;"></div>
+                    <span>${color}</span>
+                </div>`
+            ).join('');
+        }
+
+        function copyColors() {
+            const colorOutput = document.getElementById('colorOutput');
+            const colors = Array.from(colorOutput.querySelectorAll('span')).map(span => span.textContent);
+            navigator.clipboard.writeText(colors.join('\n'));
+            alert('Couleurs copiées dans le presse-papiers !');
+        }
+
+        function startQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= quizQuestions.length) {
+                document.getElementById('quizOutput').innerHTML = `
+                    Quiz terminé ! Score : ${quizScore}/${quizQuestions.length}
+                    <br><button class="demo-btn" onclick="startQuiz()">Recommencer</button>
+                `;
+                return;
+            }
+            
+            const question = quizQuestions[currentQuestion];
+            const options = question.options.map((option, index) => 
+                `<button class="demo-btn" onclick="selectAnswer(${index})">${option}</button>`
+            ).join('');
+            
+            document.getElementById('quizOutput').innerHTML = `
+                <strong>Question ${currentQuestion + 1}/${quizQuestions.length}:</strong><br>
+                ${question.question}<br><br>
+                ${options}
+            `;
+        }
+
+        function selectAnswer(selectedIndex) {
+            const question = quizQuestions[currentQuestion];
+            if (selectedIndex === question.correct) {
+                quizScore++;
+            }
+            
+            currentQuestion++;
+            showQuestion();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length) {
+                currentQuestion++;
+                showQuestion();
+            }
+        }
+
+        // Initialiser les démonstrations
+        document.addEventListener('DOMContentLoaded', () => {
+            generateArray();
+        });
+    </script>
+</body>
+</html> 

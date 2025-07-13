@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Navigation - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0a0a0a;
+            color: white;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        .test-link {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .test-link:hover {
+            background: #2980b9;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #27ae60;
+            color: white;
+        }
+        .error {
+            background: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test de Navigation - Portfolio</h1>
+    
+    <div class="test-section">
+        <h2>Test des liens de navigation</h2>
+        <p>Cliquez sur les liens ci-dessous pour tester la navigation :</p>
+        
+        <a href="index.html" class="test-link">Page principale (index.html)</a>
+        <a href="blog.html" class="test-link">Blog (blog.html)</a>
+        <a href="demo.html" class="test-link">Démonstrations (demo.html)</a>
+        
+        <div id="status"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test des liens internes</h2>
+        <p>Ces liens devraient fonctionner sur la page principale :</p>
+        
+        <a href="index.html#home" class="test-link">Accueil</a>
+        <a href="index.html#about" class="test-link">À propos</a>
+        <a href="index.html#skills" class="test-link">Compétences</a>
+        <a href="index.html#projects" class="test-link">Projets</a>
+        <a href="index.html#contact" class="test-link">Contact</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>Instructions de test</h2>
+        <ol>
+            <li>Cliquez sur "Page principale" pour aller sur index.html</li>
+            <li>Testez la navigation entre les sections (Accueil, À propos, etc.)</li>
+            <li>Cliquez sur "Blog" pour aller sur blog.html</li>
+            <li>Vérifiez que le blog s'affiche correctement</li>
+            <li>Cliquez sur "Démonstrations" pour aller sur demo.html</li>
+            <li>Testez les démonstrations interactives</li>
+        </ol>
+    </div>
+    
+    <script>
+        // Test automatique des liens
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusDiv = document.getElementById('status');
+            const links = document.querySelectorAll('.test-link');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    console.log('Test du lien:', href);
+                    
+                    // Test simple - on pourrait ajouter plus de vérifications
+                    statusDiv.innerHTML = `<div class="success">Test du lien: ${href}</div>`;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

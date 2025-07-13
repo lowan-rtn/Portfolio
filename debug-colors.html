@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Couleurs Navigation</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .debug-nav {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: #3498db !important;
+        }
+        
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        
+        .color-test {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+        
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .white { background: #ffffff; color: #000; }
+        .blue { background: #3498db; }
+        .purple { background: #9b59b6; }
+        .dark { background: #0a0a0a; }
+    </style>
+</head>
+<body>
+    <div class="debug-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#">LR</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">Accueil</a></li>
+                <li><a href="#" class="nav-link">À propos</a></li>
+                <li><a href="#" class="nav-link">Compétences</a></li>
+                <li><a href="#" class="nav-link">Projets</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="theme-toggle">🌙</button>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test des Couleurs</h2>
+        <p>Les liens de navigation devraient être <strong>blancs</strong> sur fond sombre.</p>
+        
+        <div class="color-test">
+            <div class="color-box white">Blanc</div>
+            <div class="color-box blue">Bleu</div>
+            <div class="color-box purple">Violet</div>
+            <div class="color-box dark">Sombre</div>
+        </div>
+        
+        <p>✅ Si vous voyez les liens en blanc, le problème est résolu !</p>
+        <p>❌ Si les liens sont encore noirs, il y a un problème de CSS.</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Lien vers le Portfolio</h2>
+        <p><a href="index.html" style="color: #3498db; text-decoration: none; font-weight: bold;">🚀 Retour au Portfolio</a></p>
+    </div>
+</body>
+</html> 

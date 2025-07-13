@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design moderne pour portfolio développeur - Blog</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-header {
+            padding: var(--spacing-xxl) 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .article-category {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xxl) 0;
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin: var(--spacing-xl) 0 var(--spacing-lg);
+            font-weight: 600;
+        }
+        
+        .article-content h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            font-weight: 600;
+        }
+        
+        .article-content p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .article-content ul, .article-content ol {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-lg);
+        }
+        
+        .article-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .code-block {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        
+        .highlight-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: var(--spacing-xl);
+            transition: var(--transition-fast);
+        }
+        
+        .back-to-blog:hover {
+            color: var(--secondary-color);
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">LR</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../blog.html" class="nav-link active">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../demo.html" class="nav-link">Démos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <a href="../blog.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i>
+                Retour au blog
+            </a>
+            <h1 class="section-title">Design moderne pour portfolio développeur</h1>
+            <div class="article-meta">
+                <span class="article-date">5 Janvier 2025</span>
+                <span class="article-category">Web</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <p>
+                Créer un portfolio moderne et professionnel est essentiel pour tout développeur. 
+                Dans cet article, je partage mon expérience dans la conception de ce portfolio 
+                avec des animations fluides et un design responsive.
+            </p>
+
+            <h2>Les Principes du Design Moderne</h2>
+            <p>
+                Un portfolio efficace doit respecter plusieurs principes de design moderne :
+            </p>
+            <ul>
+                <li><strong>Simplicité</strong> : Interface épurée et intuitive</li>
+                <li><strong>Responsive</strong> : Adaptation à tous les appareils</li>
+                <li><strong>Performance</strong> : Chargement rapide et fluide</li>
+                <li><strong>Accessibilité</strong> : Utilisable par tous les utilisateurs</li>
+                <li><strong>Personnalité</strong> : Reflet de votre style unique</li>
+            </ul>
+
+            <h2>Choix Technologiques</h2>
+            <p>
+                J'ai opté pour une approche "vanilla" sans framework pour plusieurs raisons :
+            </p>
+
+            <h3>HTML5 Sémantique</h3>
+            <div class="code-block">
+                <pre><code>&lt;section class="hero" id="home"&gt;
+    &lt;div class="container"&gt;
+        &lt;h1 class="hero-title"&gt;
+            &lt;span class="typing-text"&gt;Bonjour, je suis Lowan&lt;/span&gt;
+        &lt;/h1&gt;
+        &lt;p class="hero-subtitle"&gt;Développeur passionné par l'innovation&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+            </div>
+
+            <h3>CSS3 Avancé</h3>
+            <p>
+                Utilisation des dernières fonctionnalités CSS :
+            </p>
+            <ul>
+                <li><strong>Variables CSS</strong> : Gestion centralisée des couleurs et espacements</li>
+                <li><strong>Grid et Flexbox</strong> : Layouts modernes et flexibles</li>
+                <li><strong>Animations CSS</strong> : Transitions fluides et effets visuels</li>
+                <li><strong>Media Queries</strong> : Design responsive adaptatif</li>
+            </ul>
+
+            <div class="code-block">
+                <pre><code>:root {
+    --primary-color: #3498db;
+    --secondary-color: #9b59b6;
+    --bg-primary: #0a0a0a;
+    --text-primary: #ffffff;
+    --spacing-lg: 2rem;
+    --border-radius: 8px;
+    --transition-fast: 0.3s ease;
+}</code></pre>
+            </div>
+
+            <h2>Animations et Interactions</h2>
+            <p>
+                Les animations jouent un rôle crucial dans l'expérience utilisateur :
+            </p>
+
+            <h3>Effet de Typing</h3>
+            <div class="code-block">
+                <pre><code>function initTypingEffect() {
+    const text = "Bonjour, je suis Lowan";
+    const typingElement = document.querySelector('.typing-text');
+    let index = 0;
+    
+    const typeWriter = () => {
+        if (index < text.length) {
+            typingElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 100);
+        }
+    };
+    
+    typeWriter();
+}</code></pre>
+            </div>
+
+            <h3>Animations au Scroll</h3>
+            <p>
+                Utilisation de l'Intersection Observer API pour des animations déclenchées par le scroll :
+            </p>
+            <div class="code-block">
+                <pre><code>const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+});</code></pre>
+            </div>
+
+            <h2>Responsive Design</h2>
+            <p>
+                Le design responsive est essentiel pour toucher tous les utilisateurs :
+            </p>
+
+            <h3>Breakpoints Stratégiques</h3>
+            <ul>
+                <li><strong>Mobile</strong> : ≤ 768px - Navigation hamburger, grilles adaptatives</li>
+                <li><strong>Tablet</strong> : 768px - 1024px - Layouts intermédiaires</li>
+                <li><strong>Desktop</strong> : > 1024px - Expérience complète</li>
+            </ul>
+
+            <h3>Navigation Mobile</h3>
+            <div class="code-block">
+                <pre><code>.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--bg-secondary);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+}</code></pre>
+            </div>
+
+            <h2>Performance et Optimisation</h2>
+            <p>
+                La performance est cruciale pour l'expérience utilisateur :
+            </p>
+
+            <h3>Techniques d'Optimisation</h3>
+            <ul>
+                <li><strong>Lazy Loading</strong> : Chargement différé des images</li>
+                <li><strong>Debouncing</strong> : Optimisation des événements scroll</li>
+                <li><strong>Throttling</strong> : Limitation des appels de fonction</li>
+                <li><strong>CSS Optimisé</strong> : Minimisation et compression</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>⚡ Astuce Performance</h4>
+                <p>
+                    Utilisez <code>transform</code> et <code>opacity</code> pour les animations 
+                    plutôt que <code>top</code> ou <code>left</code> pour de meilleures performances.
+                </p>
+            </div>
+
+            <h2>Accessibilité</h2>
+            <p>
+                L'accessibilité n'est pas optionnelle, elle est essentielle :
+            </p>
+            <ul>
+                <li><strong>Navigation au clavier</strong> : Support complet des raccourcis</li>
+                <li><strong>Contraste</strong> : Respect des standards WCAG</li>
+                <li><strong>ARIA Labels</strong> : Support des lecteurs d'écran</li>
+                <li><strong>Focus Visible</strong> : Indicateurs de focus clairs</li>
+            </ul>
+
+            <h2>Mode Sombre/Clair</h2>
+            <p>
+                L'implémentation du mode sombre/clair améliore l'expérience utilisateur :
+            </p>
+            <div class="code-block">
+                <pre><code>function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}</code></pre>
+            </div>
+
+            <h2>SEO et Métadonnées</h2>
+            <p>
+                Un bon SEO est crucial pour la visibilité :
+            </p>
+            <ul>
+                <li><strong>Meta tags</strong> : Description, mots-clés, Open Graph</li>
+                <li><strong>Structure sémantique</strong> : HTML5 avec landmarks</li>
+                <li><strong>Performance</strong> : Vitesse de chargement optimisée</li>
+                <li><strong>Mobile-first</strong> : Indexation optimisée</li>
+            </ul>
+
+            <h2>Outils et Ressources</h2>
+            <p>
+                Voici les outils que j'ai utilisés pour ce projet :
+            </p>
+            <ul>
+                <li><strong>Font Awesome</strong> : Icônes modernes et cohérentes</li>
+                <li><strong>Google Fonts</strong> : Typographie Inter optimisée</li>
+                <li><strong>Particles.js</strong> : Animations de particules interactives</li>
+                <li><strong>GitHub Pages</strong> : Hébergement gratuit et automatique</li>
+            </ul>
+
+            <h2>Leçons Apprises</h2>
+            <p>
+                Ce projet m'a enseigné plusieurs leçons importantes :
+            </p>
+            <ul>
+                <li><strong>Simplicité</strong> : Moins c'est souvent plus</li>
+                <li><strong>Performance</strong> : Toujours optimiser dès le début</li>
+                <li><strong>Accessibilité</strong> : Penser à tous les utilisateurs</li>
+                <li><strong>Itération</strong> : Améliorer continuellement</li>
+                <li><strong>Documentation</strong> : Commenter et documenter</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                Créer un portfolio moderne nécessite un équilibre entre esthétique, 
+                fonctionnalité et performance. Les technologies web modernes offrent 
+                des possibilités infinies pour créer des expériences uniques et mémorables.
+            </p>
+
+            <p>
+                L'important est de rester à jour avec les meilleures pratiques 
+                et de toujours privilégier l'expérience utilisateur.
+            </p>
+
+            <div class="article-tags">
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Design</span>
+                <span class="tag">Web</span>
+                <span class="tag">Portfolio</span>
+                <span class="tag">Responsive</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lowan Reutin-Rabillé</h3>
+                    <p>Développeur passionné par l'informatique et les innovations technologiques</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="../index.html#home">Accueil</a></li>
+                        <li><a href="../index.html#about">À propos</a></li>
+                        <li><a href="../index.html#projects">Projets</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../demo.html">Démos</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/lololepro17" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lowan Reutin-Rabillé. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts.js"></script>
+</body>
+</html> 

@@ -48,19 +48,34 @@
                     <a href="#projects" class="nav-link">Projets</a>
                 </li>
                 <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="demo.html" class="nav-link">Démos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cv.html" class="nav-link">CV</a>
+                </li>
+                <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Section Hero -->
     <section id="home" class="hero">
+        <div id="particles-js"></div>
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -113,20 +128,46 @@
                         de la créativité et de l'ingéniosité technique. Chaque projet est une opportunité 
                         d'apprendre, d'innover et de créer quelque chose d'unique.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">6+</span>
-                            <span class="stat-label">Projets réalisés</span>
+                                    <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Projets réalisés</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Années d'expérience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Passion</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="visitorCount">0</span>
+                        <span class="stat-label">Visiteurs</span>
+                    </div>
+                </div>
+                
+                <!-- Statistiques GitHub en temps réel -->
+                <div class="github-stats">
+                    <h3>Activité GitHub</h3>
+                    <div class="github-grid">
+                        <div class="github-stat">
+                            <i class="fab fa-github"></i>
+                            <span class="github-number" id="repoCount">--</span>
+                            <span class="github-label">Repositories</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Années d'expérience</span>
+                        <div class="github-stat">
+                            <i class="fas fa-star"></i>
+                            <span class="github-number" id="starCount">--</span>
+                            <span class="github-label">Stars</span>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Passion</span>
+                        <div class="github-stat">
+                            <i class="fas fa-code-branch"></i>
+                            <span class="github-number" id="forkCount">--</span>
+                            <span class="github-label">Forks</span>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div class="about-image">
                     <div class="image-placeholder">
@@ -468,6 +509,59 @@
         </div>
     </section>
 
+    <!-- Section Témoignages -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce qu'on dit de mon travail</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Lowan a une approche très méthodique et créative pour résoudre les problèmes techniques. Ses projets démontrent une excellente maîtrise des concepts de programmation."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Professeur NSI</h4>
+                            <span>Lycée</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Passionné et curieux, Lowan s'adapte rapidement aux nouvelles technologies. Son portfolio reflète bien sa progression et sa polyvalence en développement."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Mentor Tech</h4>
+                            <span>Communauté</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Un développeur prometteur avec une vision claire de l'innovation technologique. Ses projets de machine learning montrent une vraie compréhension des enjeux actuels."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Expert IA</h4>
+                            <span>Industrie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -504,6 +598,8 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

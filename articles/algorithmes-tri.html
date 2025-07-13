@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisation d'algorithmes de tri - Blog</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-header {
+            padding: var(--spacing-xxl) 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .article-category {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xxl) 0;
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin: var(--spacing-xl) 0 var(--spacing-lg);
+            font-weight: 600;
+        }
+        
+        .article-content h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            font-weight: 600;
+        }
+        
+        .article-content p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .article-content ul, .article-content ol {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-lg);
+        }
+        
+        .article-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .code-block {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        
+        .highlight-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: var(--spacing-xl);
+            transition: var(--transition-fast);
+        }
+        
+        .back-to-blog:hover {
+            color: var(--secondary-color);
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">LR</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../blog.html" class="nav-link active">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../demo.html" class="nav-link">Démos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <a href="../blog.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i>
+                Retour au blog
+            </a>
+            <h1 class="section-title">Visualisation d'algorithmes de tri</h1>
+            <div class="article-meta">
+                <span class="article-date">1 Janvier 2025</span>
+                <span class="article-category">Algorithmes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <p>
+                La visualisation d'algorithmes est un outil pédagogique puissant qui permet de comprendre 
+                le fonctionnement interne des algorithmes de tri. J'ai créé une application web interactive 
+                pour visualiser différents algorithmes de tri en temps réel.
+            </p>
+
+            <h2>Pourquoi visualiser les algorithmes ?</h2>
+            <p>
+                Les algorithmes de tri sont souvent abstraits et difficiles à comprendre sans visualisation. 
+                Voici pourquoi la visualisation est importante :
+            </p>
+            <ul>
+                <li><strong>Compréhension intuitive</strong> : Voir l'algorithme en action</li>
+                <li><strong>Comparaison des performances</strong> : Observer les différences de vitesse</li>
+                <li><strong>Débogage</strong> : Identifier les problèmes visuellement</li>
+                <li><strong>Pédagogie</strong> : Apprendre de manière interactive</li>
+            </ul>
+
+            <h2>Algorithmes implémentés</h2>
+            <p>
+                J'ai implémenté plusieurs algorithmes de tri classiques :
+            </p>
+
+            <h3>1. Tri à bulles (Bubble Sort)</h3>
+            <p>
+                Le tri à bulles est l'algorithme le plus simple à comprendre et à implémenter :
+            </p>
+            <div class="code-block">
+                <pre><code>function bubbleSort(array) {
+    const n = array.length;
+    
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                // Échanger les éléments
+                [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                
+                // Mettre à jour la visualisation
+                updateVisualization(array, j, j + 1);
+                await sleep(100); // Pause pour voir l'animation
+            }
+        }
+    }
+}</code></pre>
+            </div>
+
+            <h3>2. Tri rapide (Quick Sort)</h3>
+            <p>
+                Le tri rapide est un algorithme de tri par comparaison basé sur la stratégie "diviser pour régner" :
+            </p>
+            <div class="code-block">
+                <pre><code>async function quickSort(array, low, high) {
+    if (low < high) {
+        const pi = await partition(array, low, high);
+        await quickSort(array, low, pi - 1);
+        await quickSort(array, pi + 1, high);
+    }
+}
+
+async function partition(array, low, high) {
+    const pivot = array[high];
+    let i = low - 1;
+    
+    for (let j = low; j < high; j++) {
+        if (array[j] < pivot) {
+            i++;
+            [array[i], array[j]] = [array[j], array[i]];
+            updateVisualization(array, i, j);
+            await sleep(50);
+        }
+    }
+    
+    [array[i + 1], array[high]] = [array[high], array[i + 1]];
+    return i + 1;
+}</code></pre>
+            </div>
+
+            <h2>Architecture de l'application</h2>
+            <p>
+                L'application est structurée de manière modulaire pour faciliter l'ajout de nouveaux algorithmes :
+            </p>
+
+            <h3>Structure du projet</h3>
+            <div class="code-block">
+                <pre><code>sorting-visualizer/
+├── index.html          # Interface utilisateur
+├── styles.css          # Styles et animations
+├── scripts/
+│   ├── main.js         # Logique principale
+│   ├── algorithms.js   # Algorithmes de tri
+│   └── visualization.js # Gestion de la visualisation
+└── assets/
+    └── images/         # Ressources graphiques</code></pre>
+            </div>
+
+            <h3>Gestion de la visualisation</h3>
+            <div class="code-block">
+                <pre><code>class SortingVisualizer {
+    constructor(container) {
+        this.container = container;
+        this.bars = [];
+        this.isSorting = false;
+    }
+    
+    generateArray(size = 20) {
+        this.array = Array.from({length: size}, () => 
+            Math.floor(Math.random() * 100) + 1
+        );
+        this.render();
+    }
+    
+    render() {
+        this.container.innerHTML = '';
+        this.bars = [];
+        
+        this.array.forEach((value, index) => {
+            const bar = document.createElement('div');
+            bar.className = 'sort-bar';
+            bar.style.height = `${value * 2}px`;
+            bar.setAttribute('data-value', value);
+            this.container.appendChild(bar);
+            this.bars.push(bar);
+        });
+    }
+    
+    async highlightBars(index1, index2) {
+        this.bars[index1].classList.add('comparing');
+        this.bars[index2].classList.add('comparing');
+        await sleep(100);
+        this.bars[index1].classList.remove('comparing');
+        this.bars[index2].classList.remove('comparing');
+    }
+}</code></pre>
+            </div>
+
+            <h2>Interface utilisateur</h2>
+            <p>
+                L'interface est conçue pour être intuitive et informative :
+            </p>
+
+            <h3>Contrôles interactifs</h3>
+            <ul>
+                <li><strong>Génération de tableau</strong> : Créer de nouveaux ensembles de données</li>
+                <li><strong>Sélection d'algorithme</strong> : Choisir l'algorithme à visualiser</li>
+                <li><strong>Contrôle de vitesse</strong> : Ajuster la vitesse d'animation</li>
+                <li><strong>Pause/Reprendre</strong> : Contrôler l'animation</li>
+                <li><strong>Reset</strong> : Recommencer la visualisation</li>
+            </ul>
+
+            <h3>Indicateurs visuels</h3>
+            <ul>
+                <li><strong>Barres colorées</strong> : Différentes couleurs selon l'état</li>
+                <li><strong>Comparaisons</strong> : Mise en évidence des éléments comparés</li>
+                <li><strong>Échanges</strong> : Animation des échanges d'éléments</li>
+                <li><strong>Trié</strong> : Indication des éléments déjà triés</li>
+            </ul>
+
+            <h2>Optimisations et défis</h2>
+            <p>
+                Le développement de cette application a présenté plusieurs défis techniques :
+            </p>
+
+            <h3>1. Gestion de l'asynchrone</h3>
+            <p>
+                Les algorithmes de tri sont naturellement synchrones, mais la visualisation nécessite 
+                des pauses asynchrones pour être visible :
+            </p>
+            <div class="code-block">
+                <pre><code>// Fonction utilitaire pour les pauses
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Utilisation dans les algorithmes
+async function bubbleSort(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                await updateVisualization(array, j, j + 1);
+                await sleep(100);
+            }
+        }
+    }</code></pre>
+            </div>
+
+            <h3>2. Performance de l'animation</h3>
+            <p>
+                L'animation doit être fluide même avec de grands ensembles de données :
+            </p>
+            <ul>
+                <li>Utilisation de <code>requestAnimationFrame</code> pour les animations</li>
+                <li>Optimisation des sélecteurs DOM</li>
+                <li>Gestion de la mémoire pour éviter les fuites</li>
+                <li>Throttling des événements de mise à jour</li>
+            </ul>
+
+            <h3>3. Gestion des états</h3>
+            <p>
+                L'application doit gérer plusieurs états simultanément :
+            </p>
+            <ul>
+                <li>État de tri (en cours, terminé, en pause)</li>
+                <li>État de l'interface (boutons activés/désactivés)</li>
+                <li>État de la visualisation (barres en cours de modification)</li>
+                <li>État des données (tableau original vs tableau en cours)</li>
+            </ul>
+
+            <h2>Métriques et analyses</h2>
+            <p>
+                L'application fournit des métriques utiles pour comprendre les algorithmes :
+            </p>
+
+            <h3>Métriques collectées</h3>
+            <ul>
+                <li><strong>Nombre de comparaisons</strong> : Mesure de la complexité</li>
+                <li><strong>Nombre d'échanges</strong> : Efficacité de l'algorithme</li>
+                <li><strong>Temps d'exécution</strong> : Performance réelle</li>
+                <li><strong>Utilisation mémoire</strong> : Complexité spatiale</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>📊 Exemple de métriques</h4>
+                <p>
+                    Pour un tableau de 20 éléments :<br>
+                    <strong>Tri à bulles</strong> : ~190 comparaisons, ~95 échanges<br>
+                    <strong>Tri rapide</strong> : ~80 comparaisons, ~20 échanges<br>
+                    La différence est visuellement frappante !
+                </p>
+            </div>
+
+            <h2>Extensions futures</h2>
+            <p>
+                L'application peut être étendue avec de nouvelles fonctionnalités :
+            </p>
+            <ul>
+                <li><strong>Nouveaux algorithmes</strong> : Tri fusion, tri par tas, etc.</li>
+                <li><strong>Comparaison côte à côte</strong> : Visualiser plusieurs algorithmes simultanément</li>
+                <li><strong>Analyse de complexité</strong> : Graphiques de performance</li>
+                <li><strong>Mode éducatif</strong> : Explications étape par étape</li>
+                <li><strong>Export de données</strong> : Sauvegarder les résultats</li>
+            </ul>
+
+            <h2>Impact pédagogique</h2>
+            <p>
+                Cette application a un impact significatif sur l'apprentissage :
+            </p>
+            <ul>
+                <li><strong>Compréhension intuitive</strong> : Les concepts abstraits deviennent concrets</li>
+                <li><strong>Engagement</strong> : L'interactivité maintient l'attention</li>
+                <li><strong>Rétention</strong> : La visualisation améliore la mémorisation</li>
+                <li><strong>Motivation</strong> : Voir les résultats encourage l'exploration</li>
+            </ul>
+
+            <h2>Leçons apprises</h2>
+            <p>
+                Ce projet m'a enseigné plusieurs leçons importantes :
+            </p>
+            <ul>
+                <li><strong>Importance de la visualisation</strong> : Un bon design aide à la compréhension</li>
+                <li><strong>Gestion de l'asynchrone</strong> : JavaScript moderne simplifie les animations</li>
+                <li><strong>Performance</strong> : L'optimisation est cruciale pour l'expérience utilisateur</li>
+                <li><strong>Pédagogie</strong> : L'interactivité améliore l'apprentissage</li>
+                <li><strong>Modularité</strong> : Une bonne architecture facilite les extensions</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                La visualisation d'algorithmes est un outil puissant qui transforme 
+                l'apprentissage de la programmation. En rendant les concepts abstraits 
+                concrets et interactifs, elle ouvre de nouvelles possibilités pédagogiques.
+            </p>
+
+            <p>
+                Cette application démontre l'importance de créer des outils éducatifs 
+                qui sont à la fois informatifs et engageants. L'avenir de l'éducation 
+                technologique passe par l'interactivité et la visualisation.
+            </p>
+
+            <div class="article-tags">
+                <span class="tag">Algorithmes</span>
+                <span class="tag">Visualisation</span>
+                <span class="tag">Pédagogie</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Tri</span>
+                <span class="tag">Animation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lowan Reutin-Rabillé</h3>
+                    <p>Développeur passionné par l'informatique et les innovations technologiques</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="../index.html#home">Accueil</a></li>
+                        <li><a href="../index.html#about">À propos</a></li>
+                        <li><a href="../index.html#projects">Projets</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../demo.html">Démos</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/lololepro17" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lowan Reutin-Rabillé. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts.js"></script>
+</body>
+</html> 
