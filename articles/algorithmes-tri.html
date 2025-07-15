@@ -230,8 +230,7 @@
                 await sleep(100); // Pause pour voir l'animation
             }
         }
-    }
-}</code></pre>
+    }</code></pre>
             </div>
 
             <h3>2. Tri rapide (Quick Sort)</h3>
@@ -517,5 +516,25 @@ async function bubbleSort(array) {
 
     <!-- Scripts -->
     <script src="../scripts.js"></script>
+    <!-- Favicon et icônes PWA personnalisées -->
+    <link id="favicon" rel="icon" type="image/png" href="../assets/images/icon-dark.png">
+    <link rel="apple-touch-icon" href="../assets/images/icon-dark.png">
+    <!-- Variante claire (optionnelle) -->
+    <link id="favicon-light" rel="icon" type="image/png" href="../assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="../assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <script>
+    // Changement dynamique de l'icône selon le thème
+    function updateFavicon() {
+        const darkIcon = '../assets/images/icon-dark.png';
+        const lightIcon = '../assets/images/icon-light.png';
+        const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const favicon = document.getElementById('favicon');
+        if (favicon) {
+            favicon.setAttribute('href', isLight ? lightIcon : darkIcon);
+        }
+    }
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', updateFavicon);
+    document.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
 </body>
 </html> 

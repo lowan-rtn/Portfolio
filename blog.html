@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon et icônes PWA personnalisées -->
+    <link id="favicon" rel="icon" type="image/png" href="assets/images/icon-dark.png">
+    <link rel="apple-touch-icon" href="assets/images/icon-dark.png">
+    <!-- Variante claire (optionnelle) -->
+    <link id="favicon-light" rel="icon" type="image/png" href="assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <script>
+    // Changement dynamique de l'icône selon le thème
+    function updateFavicon() {
+        const darkIcon = 'assets/images/icon-dark.png';
+        const lightIcon = 'assets/images/icon-light.png';
+        const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const favicon = document.getElementById('favicon');
+        if (favicon) {
+            favicon.setAttribute('href', isLight ? lightIcon : darkIcon);
+        }
+    }
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', updateFavicon);
+    document.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
 </head>
 <body>
     <!-- Navigation -->
