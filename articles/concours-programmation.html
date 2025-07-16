@@ -159,6 +159,10 @@
             padding: var(--spacing-md);
             border-radius: var(--border-radius);
             text-align: center;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .achievement-stat .number {
@@ -166,11 +170,48 @@
             font-weight: 700;
             color: #ffd700;
             display: block;
+            margin-bottom: var(--spacing-xs);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .achievement-stat .label {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            line-height: 1.2;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Responsive pour les statistiques */
+        @media (max-width: 768px) {
+            .achievement-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+            }
+            
+            .achievement-stat {
+                min-height: 70px;
+                padding: var(--spacing-sm);
+            }
+            
+            .achievement-stat .number {
+                font-size: 1.3rem;
+            }
+            
+            .achievement-stat .label {
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .achievement-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievement-stat {
+                min-height: 60px;
+            }
         }
     </style>
 </head>
