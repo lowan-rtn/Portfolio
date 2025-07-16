@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon expérience dans les concours de programmation - Blog</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-header {
+            padding: var(--spacing-xxl) 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            flex-wrap: wrap;
+        }
+        
+        .article-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .article-category {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xxl) 0;
+            line-height: 1.8;
+        }
+        
+        .article-content h2 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            margin: var(--spacing-xl) 0 var(--spacing-lg);
+            font-weight: 600;
+        }
+        
+        .article-content h3 {
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+            font-weight: 600;
+        }
+        
+        .article-content p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .article-content ul, .article-content ol {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-lg);
+        }
+        
+        .article-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .code-block {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            overflow-x: auto;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .code-block pre {
+            margin: 0;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+        
+        .highlight-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+            border-radius: var(--border-radius);
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: var(--spacing-xl);
+            transition: var(--transition-fast);
+        }
+        
+        .back-to-blog:hover {
+            color: var(--secondary-color);
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .achievement-highlight {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(192, 192, 192, 0.1));
+            border: 2px solid #ffd700;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        
+        .achievement-highlight h3 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .achievement-highlight p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .achievement-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .achievement-stat {
+            background: var(--bg-card);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .achievement-stat .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            display: block;
+        }
+        
+        .achievement-stat .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">LR</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../blog.html" class="nav-link active">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../demo.html" class="nav-link">Démos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <a href="../blog.html" class="back-to-blog">
+                <i class="fas fa-arrow-left"></i>
+                Retour au blog
+            </a>
+            <h1 class="section-title">Mon expérience dans les concours de programmation</h1>
+            <div class="article-meta">
+                <span class="article-date">20 Janvier 2025</span>
+                <span class="article-category">Compétitions</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <p>
+                Les concours de programmation et de cybersécurité représentent pour moi l'opportunité 
+                de mettre à l'épreuve mes compétences techniques dans un environnement compétitif. 
+                En 2025, j'ai eu la chance de participer à deux concours majeurs avec des résultats 
+                qui dépassent mes attentes.
+            </p>
+
+            <div class="achievement-highlight">
+                <h3>🏆 Résultats Exceptionnels</h3>
+                <p>1er place au Coding Up 2025 et 1er régional au PassTonHack 2025</p>
+                <div class="achievement-stats">
+                    <div class="achievement-stat">
+                        <span class="number">1er</span>
+                        <span class="label">Coding Up</span>
+                    </div>
+                    <div class="achievement-stat">
+                        <span class="number">1er</span>
+                        <span class="label">Régional</span>
+                    </div>
+                    <div class="achievement-stat">
+                        <span class="number">36ème</span>
+                        <span class="label">National</span>
+                    </div>
+                    <div class="achievement-stat">
+                        <span class="number">2</span>
+                        <span class="label">Concours</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Coding Up 2025 - Académie de Poitiers</h2>
+            <p>
+                Le Coding Up est un concours de programmation organisé par l'Académie de Poitiers 
+                qui rassemble les meilleurs développeurs de la région. Cette compétition en présentiel 
+                m'a permis de démontrer mes compétences dans un environnement réel et sous pression.
+            </p>
+
+            <h3>Format du concours</h3>
+            <ul>
+                <li><strong>Durée</strong> : 4 heures de programmation intensive</li>
+                <li><strong>Format</strong> : Problèmes algorithmiques variés</li>
+                <li><strong>Langages</strong> : Python, Java, C++ autorisés</li>
+                <li><strong>Évaluation</strong> : Exactitude, efficacité, élégance du code</li>
+            </ul>
+
+            <h3>Mes stratégies</h3>
+            <p>
+                Pour maximiser mes chances de succès, j'ai adopté plusieurs stratégies :
+            </p>
+            <ul>
+                <li><strong>Planification</strong> : Analyser chaque problème avant de coder</li>
+                <li><strong>Optimisation</strong> : Privilégier la lisibilité puis l'efficacité</li>
+                <li><strong>Tests</strong> : Vérifier chaque solution avec des cas limites</li>
+                <li><strong>Gestion du temps</strong> : Allouer le temps proportionnellement à la difficulté</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>💡 Leçon Apprise</h4>
+                <p>
+                    La préparation est cruciale, mais la capacité d'adaptation en temps réel 
+                    est ce qui fait la différence entre un bon et un excellent résultat.
+                </p>
+            </div>
+
+            <h2>PassTonHack 2025 - Concours de Cybersécurité</h2>
+            <p>
+                Organisé par l'Armée française, PassTonHack est un concours de cybersécurité 
+                qui teste les compétences en sécurité informatique, cryptographie et analyse forensique.
+            </p>
+
+            <h3>Challenges rencontrés</h3>
+            <ul>
+                <li><strong>Cryptographie</strong> : Déchiffrement de messages encodés</li>
+                <li><strong>Forensics</strong> : Analyse de fichiers et logs système</li>
+                <li><strong>Web Security</strong> : Exploitation de vulnérabilités web</li>
+                <li><strong>Reverse Engineering</strong> : Analyse de code malveillant</li>
+            </ul>
+
+            <h3>Compétences mises en œuvre</h3>
+            <div class="code-block">
+                <pre><code># Exemple de challenge de cryptographie
+def decrypt_message(encrypted_text, key):
+    """
+    Déchiffrement d'un message avec une clé donnée
+    Utilisation d'algorithmes de substitution et permutation
+    """
+    decrypted = ""
+    for char in encrypted_text:
+        if char.isalpha():
+            # Logique de déchiffrement
+            ascii_offset = ord('A') if char.isupper() else ord('a')
+            decrypted_char = chr((ord(char) - ascii_offset - key) % 26 + ascii_offset)
+            decrypted += decrypted_char
+        else:
+            decrypted += char
+    return decrypted</code></pre>
+            </div>
+
+            <h2>Préparation et entraînement</h2>
+            <p>
+                Ma préparation pour ces concours s'est déroulée sur plusieurs mois :
+            </p>
+
+            <h3>Ressources utilisées</h3>
+            <ul>
+                <li><strong>Plateformes en ligne</strong> : HackerRank, LeetCode, CodeForces</li>
+                <li><strong>CTF (Capture The Flag)</strong> : Challenges de cybersécurité</li>
+                <li><strong>Documentation</strong> : Étude approfondie des algorithmes</li>
+                <li><strong>Pratique</strong> : Résolution quotidienne de problèmes</li>
+            </ul>
+
+            <h3>Méthodologie d'apprentissage</h3>
+            <p>
+                J'ai développé une approche structurée pour optimiser mon apprentissage :
+            </p>
+            <ul>
+                <li><strong>Régularité</strong> : Pratique quotidienne, même courte</li>
+                <li><strong>Analyse post-mortem</strong> : Étudier les solutions après chaque problème</li>
+                <li><strong>Variété</strong> : Alterner entre différents types de challenges</li>
+                <li><strong>Collaboration</strong> : Échanger avec d'autres participants</li>
+            </ul>
+
+            <h2>Impact sur mon développement</h2>
+            <p>
+                Ces concours ont eu un impact significatif sur mon parcours de développeur :
+            </p>
+
+            <h3>Compétences techniques améliorées</h3>
+            <ul>
+                <li><strong>Algorithmes</strong> : Maîtrise approfondie des structures de données</li>
+                <li><strong>Optimisation</strong> : Capacité à optimiser le code en temps réel</li>
+                <li><strong>Résolution de problèmes</strong> : Approche méthodique et créative</li>
+                <li><strong>Sécurité</strong> : Sensibilisation aux enjeux de cybersécurité</li>
+            </ul>
+
+            <h3>Soft skills développées</h3>
+            <ul>
+                <li><strong>Gestion du stress</strong> : Performance sous pression</li>
+                <li><strong>Pensée critique</strong> : Analyse rapide et efficace</li>
+                <li><strong>Persévérance</strong> : Ne jamais abandonner face à un défi</li>
+                <li><strong>Humilité</strong> : Apprendre de chaque échec</li>
+            </ul>
+
+            <h2>Conseils pour les futurs participants</h2>
+            <p>
+                Basé sur mon expérience, voici mes recommandations pour ceux qui souhaitent 
+                participer à des concours de programmation :
+            </p>
+
+            <h3>Avant le concours</h3>
+            <ul>
+                <li><strong>Pratiquez régulièrement</strong> : La constance est plus importante que l'intensité</li>
+                <li><strong>Étudiez les anciens concours</strong> : Comprenez les patterns et types de problèmes</li>
+                <li><strong>Développez votre toolbox</strong> : Maîtrisez les algorithmes classiques</li>
+                <li><strong>Préparez votre environnement</strong> : IDE, raccourcis, templates</li>
+            </ul>
+
+            <h3>Pendant le concours</h3>
+            <ul>
+                <li><strong>Restez calme</strong> : La panique est votre pire ennemi</li>
+                <li><strong>Lisez attentivement</strong> : Les détails sont souvent cruciaux</li>
+                <li><strong>Gérez votre temps</strong> : Ne restez pas bloqué sur un problème</li>
+                <li><strong>Testez vos solutions</strong> : Vérifiez avec des cas limites</li>
+            </ul>
+
+            <h2>Prochaines étapes</h2>
+            <p>
+                Ces succès m'encouragent à continuer dans cette voie :
+            </p>
+            <ul>
+                <li><strong>Participation à d'autres concours</strong> : Étendre mon expérience</li>
+                <li><strong>Mentorat</strong> : Partager mes connaissances avec d'autres</li>
+                <li><strong>Spécialisation</strong> : Approfondir la cybersécurité</li>
+                <li><strong>Projets personnels</strong> : Appliquer ces compétences à des projets concrets</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                Les concours de programmation et de cybersécurité sont des expériences 
+                enrichissantes qui poussent vos limites et révèlent votre potentiel. 
+                Ils ne sont pas seulement des compétitions, mais des opportunités 
+                d'apprentissage et de croissance personnelle.
+            </p>
+
+            <p>
+                Mon conseil : n'ayez pas peur de participer, même si vous pensez ne pas être prêt. 
+                Chaque concours est une expérience unique qui vous fait progresser, 
+                quel que soit le résultat final.
+            </p>
+
+            <div class="article-tags">
+                <span class="tag">Concours</span>
+                <span class="tag">Programmation</span>
+                <span class="tag">Cybersécurité</span>
+                <span class="tag">Algorithmes</span>
+                <span class="tag">Compétition</span>
+                <span class="tag">Apprentissage</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lowan Reutin-Rabillé</h3>
+                    <p>Développeur passionné par l'informatique et les innovations technologiques</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens rapides</h4>
+                    <ul>
+                        <li><a href="../index.html#home">Accueil</a></li>
+                        <li><a href="../index.html#about">À propos</a></li>
+                        <li><a href="../index.html#projects">Projets</a></li>
+                        <li><a href="../blog.html">Blog</a></li>
+                        <li><a href="../demo.html">Démos</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Réseaux sociaux</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/lololepro17" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lowan Reutin-Rabillé. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../scripts.js"></script>
+    <!-- Favicon et icônes PWA personnalisées -->
+    <link id="favicon" rel="icon" type="image/png" href="../assets/images/icon-dark.png">
+    <link rel="apple-touch-icon" href="../assets/images/icon-dark.png">
+    <!-- Variante claire (optionnelle) -->
+    <link id="favicon-light" rel="icon" type="image/png" href="../assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="../assets/images/icon-light.png" media="(prefers-color-scheme: light)">
+    <script>
+    // Changement dynamique de l'icône selon le thème
+    function updateFavicon() {
+        const darkIcon = '../assets/images/icon-dark.png';
+        const lightIcon = '../assets/images/icon-light.png';
+        const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const favicon = document.getElementById('favicon');
+        if (favicon) {
+            favicon.setAttribute('href', isLight ? lightIcon : darkIcon);
+        }
+    }
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', updateFavicon);
+    document.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+</body>
+</html> 
