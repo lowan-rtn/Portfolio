@@ -436,6 +436,90 @@ body {
     line-height: 1.8;
 }
 
+/* Badges de concours dans la section À propos */
+.competition-badges {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badges-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.competition-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-fast);
+}
+
+.competition-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.competition-badge.gold {
+    border-color: #ffd700;
+}
+
+.competition-badge.silver {
+    border-color: #c0c0c0;
+}
+
+.badge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.competition-badge.gold .badge-icon {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+}
+
+.competition-badge.silver .badge-icon {
+    background: linear-gradient(45deg, #c0c0c0, #e5e5e5);
+    color: #333;
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.badge-subtitle {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
 .about-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -538,6 +622,212 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+/* ===== SECTION RÉALISATIONS & CONCOURS ===== */
+.achievements {
+    padding: var(--spacing-xxl) 0;
+    background: var(--bg-primary);
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.achievement-card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.achievement-card.gold::before {
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+}
+
+.achievement-card.silver::before {
+    background: linear-gradient(90deg, #c0c0c0, #e5e5e5);
+}
+
+.achievement-card.bronze::before {
+    background: linear-gradient(90deg, #cd7f32, #daa520);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.achievement-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.achievement-badge i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.achievement-card.gold .achievement-badge i {
+    color: #ffd700;
+}
+
+.achievement-card.silver .achievement-badge i {
+    color: #c0c0c0;
+}
+
+.achievement-card.bronze .achievement-badge i {
+    color: #cd7f32;
+}
+
+.achievement-rank {
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.achievement-card.gold .achievement-rank {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #333;
+}
+
+.achievement-card.silver .achievement-rank {
+    background: linear-gradient(45deg, #c0c0c0, #e5e5e5);
+    color: #333;
+}
+
+.achievement-card.bronze .achievement-rank {
+    background: linear-gradient(45deg, #cd7f32, #daa520);
+    color: white;
+}
+
+.achievement-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.achievement-subtitle {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+.achievement-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.achievement-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.achievement-tag {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievements-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.achievement-stat {
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: var(--transition-fast);
+}
+
+.achievement-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-info .stat-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-info .stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievements-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== SECTION COMPÉTENCES ===== */
 .skills {
     padding: var(--spacing-xxl) 0;
@@ -609,6 +899,43 @@ body {
     from {
         width: 0;
     }
+}
+
+/* Compétences avec badges de réalisations */
+.achievement-skill {
+    position: relative;
+}
+
+.achievement-skill .skill-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.achievement-label {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: var(--transition-fast);
+}
+
+.achievement-skill:hover .achievement-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.achievement-skill .skill-bar {
+    margin-top: 25px;
 }
 
 /* ===== SECTION PROJETS ===== */
