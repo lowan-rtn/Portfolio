@@ -426,7 +426,17 @@ body {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: var(--spacing-xxl);
-    align-items: center;
+    align-items: start;
+    text-align: left;
+}
+.about-text {
+    text-align: left;
+}
+.about-side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    align-items: stretch;
 }
 
 .about-description {
@@ -1691,6 +1701,10 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
+    .about-text, .about-side {
+        text-align: center;
+        align-items: center;
+    }
 
     .contact-content {
         grid-template-columns: 1fr;
@@ -1729,6 +1743,22 @@ body {
 
     .about-stats {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .about-text, .about-side {
+        text-align: center;
+        align-items: center;
+    }
+    .about-stats-centered {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
     }
 }
 
