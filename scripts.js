@@ -666,6 +666,43 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', throttledScroll);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const ideas = [
+    "Refonte de site web",
+    "Application mobile",
+    "Dashboard interactif",
+    "Optimisation SEO",
+    "Automatisation de tâches",
+    "Blog technique",
+    "PWA moderne",
+    "Audit de sécurité"
+  ];
+  const carousel = document.getElementById('ideas-carousel');
+  if (carousel) {
+    carousel.innerHTML = '';
+    ideas.forEach((idea, idx) => {
+      const chip = document.createElement('span');
+      chip.className = 'idea-chip';
+      chip.textContent = idea;
+      chip.tabIndex = 0;
+      chip.setAttribute('role', 'button');
+      chip.setAttribute('aria-label', `Contactez-moi pour: ${idea}`);
+      chip.onclick = () => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      };
+      chip.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') chip.onclick();
+      };
+      carousel.appendChild(chip);
+    });
+    // Animation d'apparition séquentielle
+    const chips = carousel.querySelectorAll('.idea-chip');
+    chips.forEach((chip, i) => {
+      setTimeout(() => chip.classList.add('visible'), 300 + i * 200);
+    });
+  }
+});
+
 // ===== EXPORT POUR UTILISATION EXTERNE =====
 window.PortfolioApp = {
     showNotification,
