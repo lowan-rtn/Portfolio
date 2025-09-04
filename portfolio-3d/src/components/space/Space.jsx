@@ -1,15 +1,25 @@
-import { useRef } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Stars, Cloud } from '@react-three/drei'
+import { Stars, Cloud, PerspectiveCamera, OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom, Noise } from '@react-three/postprocessing'
+import SpaceStation from './SpaceStation'
 
 function SpaceEnvironment() {
   const starsRef = useRef()
+  const [activeModule, setActiveModule] = useState(null)
+
+  const handleModuleClick = useCallback((moduleName) => {
+    console.log(`Module clicked: ${moduleName}`)
+    setActiveModule(moduleName)
+    // Ici nous ajouterons l'animation de la caméra vers le module
+  }, [])
 
   useFrame((state, delta) => {
     // Rotation lente des étoiles
-    starsRef.current.rotation.y += delta * 0.02
-    starsRef.current.rotation.x += delta * 0.01
+    if (starsRef.current) {
+      starsRef.current.rotation.y += delta * 0.02
+      starsRef.current.rotation.x += delta * 0.01
+    }
   })
 
   return (
@@ -45,20 +55,37 @@ function SpaceEnvironment() {
         color="#c8a"
         position={[10, -5, -20]}
       />
+
+      {/* Station Spatiale */}
+      <SpaceStation onModuleClick={handleModuleClick} />
     </>
   )
 }
 
 export default function Space() {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 15], fov: 75 }}
-      style={{ background: '#000008' }}
-    >
+    <Canvas style={{ background: '#000008' }}>
+      {/* Camera et contrôles */}
+      <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={60} />
+      <OrbitControls 
+        enableZoom={true}
+        enablePan={false}
+        minDistance={10}
+        maxDistance={30}
+        rotateSpeed={0.5}
+      />
+
       {/* Lumières */}
-      <ambientLight intensity={0.1} />
-      <pointLight position={[10, 10, 10]} intensity={0.8} color="#fff" />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#88c" />
+      <ambientLight intensity={0.4} />
+      <hemisphereLight
+        skyColor="#ffffff"
+        groundColor="#000000"
+        intensity={0.5}
+      />
+      <pointLight position={[10, 10, 10]} intensity={1} color="#ffffff" />
+      <pointLight position={[-10, -10, -10]} intensity={0.8} color="#88ccff" />
+      <pointLight position={[0, 0, 15]} intensity={1} color="#4fc3f7" />
+      <pointLight position={[0, 0, -15]} intensity={0.8} color="#ffffff" />
       
       {/* Environnement spatial */}
       <SpaceEnvironment />
