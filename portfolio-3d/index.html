@@ -1,13 +1,680 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Spatiale Portfolio - Lowan Reutin-Rabillé</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: #000;
+            color: #00ffff;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .hud {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid #00ffff;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .location {
+            color: #00ff00;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .instruction {
+            color: #ffff00;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            color: #ffffff;
+            font-size: 11px;
+        }
+
+        .crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .crosshair::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #00ffff;
+            border-radius: 50%;
+        }
+
+        .interaction-hint {
+            position: absolute;
+            background: rgba(0, 255, 255, 0.9);
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 101;
+        }
+
+        .interaction-hint.show {
+            opacity: 1;
+        }
+
+        .module-ui {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 20, 40, 0.9);
+            border: 2px solid #00ffff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .module-ui.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .module-ui h2 {
+            color: #00ff00;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .module-ui p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #001122, #003366);
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            pointer-events: auto;
+            font-family: inherit;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #003366, #0066aa);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ffff;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .scanner-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            top: 0;
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .hud {
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                font-size: 10px;
+            }
+            
+            .module-ui {
+                bottom: 20px;
+                margin: 0 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div class="ui-overlay">
+        <div class="hud">
+            <div class="location">📍 <span id="current-location">Espace - Vue Externe</span></div>
+            <div class="instruction">🎯 <span id="instruction">Cliquez sur la station spatiale</span></div>
+            <div class="controls">
+                🖱️ Souris: Regarder autour<br>
+                🔍 Click: Interagir avec objets
+            </div>
+        </div>
+        
+        <div class="crosshair"></div>
+        <div class="scanner-line"></div>
+        
+        <div class="interaction-hint" id="interaction-hint"></div>
+        
+        <div class="module-ui" id="module-ui">
+            <h2 id="module-title">Module Titre</h2>
+            <p id="module-content">Contenu du module</p>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="navigateModule('prev')">← Module Précédent</button>
+                <button class="nav-btn" onclick="navigateModule('next')">Module Suivant →</button>
+                <button class="nav-btn" onclick="exitModule()">🚪 Sortir</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        🚀 Initialisation des systèmes de navigation spatiale...<br>
+        <span style="font-size: 12px;">Chargement: <span id="progress">0</span>%</span>
+    </div>
+
+    <script>
+        // Variables globales
+        let scene, camera, renderer, controls;
+        let spaceStation, stars, planets = [];
+        let raycaster, mouse;
+        let currentScene = 'space';
+        let currentModule = 0;
+        let isTransitioning = false;
+        
+        // Données des modules
+        const modules = [
+            {
+                name: "🏠 Module d'Accueil",
+                description: "Bienvenue dans ma station spatiale portfolio ! Je suis Lowan Reutin-Rabillé, développeur passionné par les technologies avancées et l'exploration digitale.",
+                color: 0x00ff00
+            },
+            {
+                name: "👨‍💻 Module Projets",
+                description: "Découvrez mes créations : Puissance 4 avec IA, CryptoPriceForecast pour la prédiction ML, applications web interactives et bien plus...",
+                color: 0x0080ff
+            },
+            {
+                name: "⚡ Module Compétences",
+                description: "Technologies maîtrisées : Python (Django, ML), JavaScript (ES6+, Three.js), développement web full-stack, intelligence artificielle.",
+                color: 0xff6600
+            },
+            {
+                name: "🎓 Module Formation",
+                description: "Parcours académique et formations continues en informatique, spécialisations en développement web et intelligence artificielle.",
+                color: 0xff0080
+            },
+            {
+                name: "📡 Module Contact",
+                description: "Prêt pour de nouveaux défis ? Contactez-moi pour collaborer sur des projets innovants ! Email: lowan.rtn@icloud.com",
+                color: 0x00ffff
+            }
+        ];
+
+        // Objets interactifs
+        const interactiveObjects = [];
+
+        // Initialisation
+        function init() {
+            // Scene
+            scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x000011, 1, 100);
+
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 20);
+
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000011);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            // Raycaster pour les interactions
+            raycaster = new THREE.Raycaster();
+            mouse = new THREE.Vector2();
+
+            // Créer la scène spatiale
+            createSpaceScene();
+
+            // Event listeners
+            window.addEventListener('resize', onWindowResize);
+            renderer.domElement.addEventListener('mousemove', onMouseMove);
+            renderer.domElement.addEventListener('click', onMouseClick);
+
+            // Simulation de chargement
+            simulateLoading();
+        }
+
+        function simulateLoading() {
+            const progressElement = document.getElementById('progress');
+            const loadingElement = document.getElementById('loading');
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                
+                progressElement.textContent = Math.floor(progress);
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingElement.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingElement.remove();
+                            startAnimation();
+                        }, 500);
+                    }, 500);
+                }
+            }, 100);
+        }
+
+        function createSpaceScene() {
+            // Étoiles de fond
+            createStarField();
+            
+            // Planètes lointaines
+            createPlanets();
+            
+            // Station spatiale principale
+            createSpaceStation();
+
+            // Éclairage
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+
+            // Lumière de la station
+            const stationLight = new THREE.PointLight(0x00ffff, 1, 30);
+            stationLight.position.set(0, 0, 0);
+            scene.add(stationLight);
+        }
+
+        function createStarField() {
+            const starGeometry = new THREE.BufferGeometry();
+            const starPositions = [];
+
+            for (let i = 0; i < 3000; i++) {
+                starPositions.push(
+                    (Math.random() - 0.5) * 200,
+                    (Math.random() - 0.5) * 200,
+                    (Math.random() - 0.5) * 200
+                );
+            }
+
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starPositions, 3));
+
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.5,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+        }
+
+        function createPlanets() {
+            const planetData = [
+                { size: 2, distance: 50, color: 0xff6b6b, speed: 0.01 },
+                { size: 1.5, distance: 70, color: 0x4ecdc4, speed: 0.007 },
+                { size: 3, distance: 90, color: 0xffa726, speed: 0.005 }
+            ];
+
+            planetData.forEach((data, index) => {
+                const geometry = new THREE.SphereGeometry(data.size, 32, 32);
+                const material = new THREE.MeshLambertMaterial({ 
+                    color: data.color,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                
+                const planet = new THREE.Mesh(geometry, material);
+                planet.position.set(data.distance, 0, 0);
+                planet.userData = { 
+                    distance: data.distance, 
+                    speed: data.speed, 
+                    angle: index * Math.PI / 3 
+                };
+                
+                planets.push(planet);
+                scene.add(planet);
+            });
+        }
+
+        function createSpaceStation() {
+            const stationGroup = new THREE.Group();
+
+            // Corps principal cylindrique
+            const mainBodyGeo = new THREE.CylinderGeometry(2, 2, 8, 16);
+            const mainBodyMat = new THREE.MeshLambertMaterial({ 
+                color: 0x666666,
+                transparent: true,
+                opacity: 0.9
+            });
+            const mainBody = new THREE.Mesh(mainBodyGeo, mainBodyMat);
+            mainBody.rotation.z = Math.PI / 2;
+            stationGroup.add(mainBody);
+
+            // Modules latéraux
+            for (let i = 0; i < 5; i++) {
+                const moduleGeo = new THREE.BoxGeometry(1.5, 1.5, 2);
+                const moduleMat = new THREE.MeshLambertMaterial({ 
+                    color: modules[i].color,
+                    transparent: true,
+                    opacity: 0.8
+                });
+                const module = new THREE.Mesh(moduleGeo, moduleMat);
+                
+                module.position.set(i * 2 - 4, 3, 0);
+                module.userData = { 
+                    type: 'module', 
+                    id: i, 
+                    name: modules[i].name,
+                    interactive: true
+                };
+                
+                interactiveObjects.push(module);
+                stationGroup.add(module);
+
+                // Lumières des modules
+                const moduleLight = new THREE.PointLight(modules[i].color, 0.5, 10);
+                moduleLight.position.copy(module.position);
+                stationGroup.add(moduleLight);
+            }
+
+            // Panneaux solaires
+            const solarPanelGeo = new THREE.PlaneGeometry(4, 1);
+            const solarPanelMat = new THREE.MeshLambertMaterial({ 
+                color: 0x001122,
+                side: THREE.DoubleSide
+            });
+            
+            for (let i = 0; i < 4; i++) {
+                const panel = new THREE.Mesh(solarPanelGeo, solarPanelMat);
+                const angle = (i / 4) * Math.PI * 2;
+                panel.position.set(Math.cos(angle) * 5, Math.sin(angle) * 5, 0);
+                panel.lookAt(0, 0, 0);
+                stationGroup.add(panel);
+            }
+
+            // Station entière interactive pour l'approche
+            const stationHitBox = new THREE.BoxGeometry(12, 8, 4);
+            const stationHitMaterial = new THREE.MeshBasicMaterial({ 
+                visible: false 
+            });
+            const stationHitMesh = new THREE.Mesh(stationHitBox, stationHitMaterial);
+            stationHitMesh.userData = { 
+                type: 'station', 
+                interactive: true 
+            };
+            interactiveObjects.push(stationHitMesh);
+            stationGroup.add(stationHitMesh);
+
+            spaceStation = stationGroup;
+            scene.add(spaceStation);
+        }
+
+        function onMouseMove(event) {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            // Mouvement de caméra libre dans l'espace
+            if (currentScene === 'space' && !isTransitioning) {
+                camera.position.x += (mouse.x * 2 - camera.position.x) * 0.01;
+                camera.position.y += (mouse.y * 2 - camera.position.y) * 0.01;
+                camera.lookAt(0, 0, 0);
+            }
+
+            // Vérifier les objets survolés
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(interactiveObjects);
+            
+            const hint = document.getElementById('interaction-hint');
+            
+            if (intersects.length > 0) {
+                const object = intersects[0].object;
+                if (object.userData.interactive) {
+                    hint.style.left = event.clientX + 10 + 'px';
+                    hint.style.top = event.clientY - 10 + 'px';
+                    
+                    if (object.userData.type === 'station') {
+                        hint.textContent = '🚀 Entrer dans la station';
+                    } else if (object.userData.type === 'module') {
+                        hint.textContent = `📡 ${object.userData.name}`;
+                    }
+                    
+                    hint.classList.add('show');
+                    document.body.style.cursor = 'pointer';
+                }
+            } else {
+                hint.classList.remove('show');
+                document.body.style.cursor = 'crosshair';
+            }
+        }
+
+        function onMouseClick(event) {
+            if (isTransitioning) return;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(interactiveObjects);
+
+            if (intersects.length > 0) {
+                const object = intersects[0].object;
+                
+                if (object.userData.type === 'station' && currentScene === 'space') {
+                    approachStation();
+                } else if (object.userData.type === 'module' && currentScene === 'station') {
+                    enterModule(object.userData.id);
+                }
+            }
+        }
+
+        function approachStation() {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            currentScene = 'station';
+            
+            updateHUD('🚀 Station Spatiale - Vue Modules', 'Cliquez sur un module pour entrer');
+
+            // Animation d'approche
+            const targetPosition = { x: 0, y: 0, z: 8 };
+            animateCamera(camera.position, targetPosition, 2000, () => {
+                isTransitioning = false;
+            });
+        }
+
+        function enterModule(moduleId) {
+            if (isTransitioning) return;
+            
+            currentModule = moduleId;
+            updateHUD(`📡 ${modules[moduleId].name}`, 'Navigation entre modules');
+            
+            // Afficher l'UI du module
+            showModuleUI(moduleId);
+            
+            // Animation vers le module
+            const modulePosition = { x: moduleId * 2 - 4, y: 3, z: 3 };
+            animateCamera(camera.position, modulePosition, 1500);
+        }
+
+        function showModuleUI(moduleId) {
+            const moduleUI = document.getElementById('module-ui');
+            const title = document.getElementById('module-title');
+            const content = document.getElementById('module-content');
+            
+            title.textContent = modules[moduleId].name;
+            content.textContent = modules[moduleId].description;
+            
+            moduleUI.classList.add('active');
+        }
+
+        function hideModuleUI() {
+            document.getElementById('module-ui').classList.remove('active');
+        }
+
+        function navigateModule(direction) {
+            if (direction === 'next' && currentModule < modules.length - 1) {
+                enterModule(currentModule + 1);
+            } else if (direction === 'prev' && currentModule > 0) {
+                enterModule(currentModule - 1);
+            }
+        }
+
+        function exitModule() {
+            console.log('Exiting module...');
+            hideModuleUI();
+            currentScene = 'station';
+            
+            // Retour à la vue station
+            const stationPosition = { x: 0, y: 2, z: 6 };
+            animateCamera(camera.position, stationPosition, 1500, () => {
+                updateHUD('🚀 Station Spatiale - Vue Modules', 'Cliquez sur un module coloré pour entrer');
+            });
+        }
+
+        function updateHUD(location, instruction) {
+            document.getElementById('current-location').textContent = location;
+            document.getElementById('instruction').textContent = instruction;
+        }
+
+        function animateCamera(from, to, duration, onComplete) {
+            const startTime = Date.now();
+            
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing
+                const eased = 1 - Math.pow(1 - progress, 3);
+                
+                camera.position.x = from.x + (to.x - from.x) * eased;
+                camera.position.y = from.y + (to.y - from.y) * eased;
+                camera.position.z = from.z + (to.z - from.z) * eased;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else if (onComplete) {
+                    onComplete();
+                }
+            }
+            
+            animate();
+        }
+
+        function startAnimation() {
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Rotation des étoiles
+                if (stars) {
+                    stars.rotation.y += 0.0002;
+                }
+
+                // Animation des planètes
+                planets.forEach(planet => {
+                    planet.userData.angle += planet.userData.speed;
+                    planet.position.x = Math.cos(planet.userData.angle) * planet.userData.distance;
+                    planet.position.z = Math.sin(planet.userData.angle) * planet.userData.distance;
+                    planet.rotation.y += 0.01;
+                });
+
+                // Rotation de la station spatiale
+                if (spaceStation) {
+                    spaceStation.rotation.y += 0.002;
+                }
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Initialisation
+        window.addEventListener('load', init);
+    </script>
+</body>
 </html>
