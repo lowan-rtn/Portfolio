@@ -2,12 +2,12 @@
 
 ## 🚀 À propos
 
-Portfolio moderne et professionnel présentant mes compétences en développement informatique, mes projets réalisés et mon parcours. Conçu avec une approche moderne utilisant HTML5, CSS3 et JavaScript vanilla.
+Portfolio moderne montran mes compétences en développement, mes projets et mon parcours. Conçu avec une approche moderne utilisant HTML5, CSS3 et JavaScript vanilla.
 
 ## ✨ Fonctionnalités
 
 ### 🎨 Design moderne
-- **Design épuré** : Interface minimaliste et professionnelle
+- **Design simpliste** : Interface minimaliste et professionnelle
 - **Thème sombre/clair** : Palette de couleurs moderne avec gradients
 - **Responsive** : Optimisé pour tous les appareils
 - **Animations fluides** : Transitions et effets visuels subtils
@@ -38,52 +38,6 @@ Portfolio moderne et professionnel présentant mes compétences en développemen
 - **Quiz technique** : Test de connaissances
 - **Générateur de couleurs** : Palettes harmonieuses
 
-## 🛠️ Installation et utilisation
-
-### Prérequis
-- Navigateur web moderne (Chrome, Firefox, Safari, Edge)
-- Serveur web local (optionnel pour développement)
-
-### Installation
-1. Clonez le repository :
-```bash
-git clone https://github.com/lololepro17/Portfolio.git
-cd Portfolio
-```
-
-2. Ouvrez `index.html` dans votre navigateur
-
-### Développement local
-Pour un serveur de développement :
-```bash
-# Avec Python
-python -m http.server 8000
-
-# Avec Node.js
-npx serve .
-
-# Avec PHP
-php -S localhost:8000
-```
-
-## 📁 Structure du projet
-
-```
-Portfolio/
-├── index.html              # Page principale
-├── blog.html               # Blog technique
-├── demo.html               # Démonstrations interactives
-├── styles.css              # Styles CSS modernes
-├── scripts.js              # JavaScript interactif
-├── particles-config.js     # Configuration particles.js
-├── assets/
-│   └── images/            # Images et ressources
-├── portfolio-info.md       # Documentation complète
-├── README.md              # Ce fichier
-├── LICENSE                # Licence MIT
-└── .gitignore            # Fichiers ignorés par Git
-```
-
 ## 🎯 Sections du portfolio
 
 ### 🏠 Accueil
@@ -113,24 +67,6 @@ Portfolio/
 - Formulaire de contact avec validation
 - Liens vers LinkedIn et GitHub
 - Notifications en temps réel
-
-## 🎨 Palette de couleurs
-
-```css
-/* Couleurs principales */
---primary-color: #3498db;      /* Bleu */
---secondary-color: #9b59b6;    /* Violet */
---accent-color: #e74c3c;       /* Rouge */
---success-color: #2ecc71;      /* Vert */
-
-/* Fonds */
---bg-primary: #0a0a0a;         /* Noir profond */
---bg-secondary: #1a1a1a;       /* Gris très foncé */
---bg-tertiary: #2a2a2a;        /* Gris foncé */
-
-/* Gradients */
---gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-```
 
 ## 📱 Responsive Design
 
@@ -179,7 +115,7 @@ https://lololepro17.github.io/Portfolio
 ## 📈 Améliorations futures
 
 ### Phase 2
-- [ ] Mode sombre/clair
+- [ ] Mode sombre/clair (sans bugs)
 - [ ] Animations 3D avec Three.js
 - [ ] Blog intégré
 - [ ] Système de commentaires
@@ -214,7 +150,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 - **Email** : lowan.rtn@icloud.com
 - **LinkedIn** : [Lowan Reutin-Rabillé](https://www.linkedin.com/in/lowan-reutin-rabillé-bb0899301)
-- **GitHub** : [@lololepro17](https://github.com/lololepro17)
+- **GitHub** : [@lowan-rtn](https://github.com/lowan-rtn)
 
 ---
 

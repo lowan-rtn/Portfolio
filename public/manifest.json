@@ -1,7 +1,7 @@
 {
   "name": "Portfolio - Lowan Reutin-Rabillé",
   "short_name": "Portfolio",
-  "description": "Portfolio de développeur passionné par l'informatique et les innovations technologiques",
+  "description": "Portfolio d'un dev passionné par l'informatique et les innovations technologiques",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
