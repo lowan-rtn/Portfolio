@@ -715,9 +715,45 @@
     <!-- Scripts -->
     <script src="../assets/js/main.js"></script>
     <script>
-        function downloadCV() {
-            showNotification('Fonctionnalité de téléchargement en cours de développement', 'info', 'CV');
-        }
+    function downloadCV() {
+        // Chemin vers le fichier CV
+        const cvPath = '../src/cv.pdf'; // Ajustez le chemin selon votre structure de dossiers
+        
+        // Vérifier si le fichier existe
+        fetch(cvPath, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    // Le fichier existe, procéder au téléchargement
+                    const link = document.createElement('a');
+                    link.href = cvPath;
+                    link.download = 'CV_lowan_reutin_rabille.pdf'; // Nom du fichier lors du téléchargement
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Notification de succès (si vous avez une fonction showNotification)
+                    if (typeof showNotification === 'function') {
+                        showNotification('CV téléchargé avec succès !', 'success', 'CV');
+                    }
+                } else {
+                    // Le fichier n'existe pas
+                    if (typeof showNotification === 'function') {
+                        showNotification('CV non disponible pour le moment', 'warning', 'CV');
+                    } else {
+                        alert('CV non disponible pour le moment');
+                    }
+                }
+            })
+            .catch(error => {
+                // Erreur lors de la vérification
+                console.error('Erreur lors de la vérification du CV:', error);
+                if (typeof showNotification === 'function') {
+                    showNotification('Erreur lors du chargement du CV', 'error', 'CV');
+                } else {
+                    alert('Erreur lors du chargement du CV');
+                }
+            });
+    }
     </script>
     <!-- Favicon et icônes PWA personnalisées -->
     <link id="favicon" rel="icon" type="image/png" href="../assets/images/icon-dark.png">
