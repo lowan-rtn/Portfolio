@@ -62,7 +62,7 @@
 ### Tests Manuels
 ```bash
 # Vérifier les headers de sécurité
-curl -I https://lololepro17.github.io/Portfolio
+curl -I https://lowan-rtn.github.io/Portfolio
 
 # Tester l'injection XSS
 # Essayer : <script>alert('XSS')</script> dans les formulaires
@@ -132,7 +132,7 @@ curl -I https://lololepro17.github.io/Portfolio
 
 Si vous découvrez une vulnérabilité :
 - **Email** : lowan.rtn@icloud.com
-- **GitHub** : https://github.com/lololepro17
+- **GitHub** : https://github.com/lowan-rtn
 - **Responsible Disclosure** : Merci de contacter avant publication
 
 ---

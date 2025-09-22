@@ -455,7 +455,7 @@ async function initGitHubStats() {
             return;
         }
 
-        const username = 'lololepro17';
+        const username = 'lowan-rtn';
         const response = await fetch(`https://api.github.com/users/${username}`);
         
         if (!response.ok) {

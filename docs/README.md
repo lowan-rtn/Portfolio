@@ -105,7 +105,7 @@ Portfolio moderne montran mes compétences en développement, mes projets et mon
 
 ### GitHub Pages
 Le portfolio est automatiquement déployé sur GitHub Pages :
-https://lololepro17.github.io/Portfolio
+https://lowan-rtn.github.io/Portfolio
 
 ### Autres options
 - **Netlify** : Déploiement automatique depuis Git
