@@ -1,3 +1,15 @@
-/* minimal global styles */
-html,body,#__next { height: 100%; }
-body { margin:0; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:#0b0b10;
+  --text:#e6e6e6;
+  --muted:#8e8e8e;
+  --violet:#7c2eff;
+  --violetSoft:#d66bff;
+}
+html, body, #__next { height: 100%; }
+body { background: var(--bg); color: var(--text); }
+::selection { background: #7c2eff55; }
+html { scroll-behavior: smooth; }

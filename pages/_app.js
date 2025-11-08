@@ -5,7 +5,10 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#0b0b10" />
         <link rel="icon" href="/favicon.ico" />
+        <title>Lowan — Portfolio</title>
       </Head>
       <Component {...pageProps} />
     </>
